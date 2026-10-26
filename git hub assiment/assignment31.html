@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Vijendra Maurya">
+<title>Responsive Menu Bar - Flexbox - Vijendra</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Poppins:wght@700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--color-bg);font-family:var(--font-body)}
+
+  /* ===== MENU BAR - display:flex ===== */
+  .navbar{
+    background: white;
+    padding: 0 24px;
+    height: 64px;
+    display: flex; /* FLEXBOX */
+    justify-content: space-between; /* Logo left, menu right */
+    align-items: center; /* Vertically center */
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* Left - Logo + Name */
+  .logo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 18px;
+    text-decoration: none;
+  }
+  .logo-badge{width:36px;height:36px;background:var(--color-primary);color:white;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
+
+  /* Center - Menu Links - Flex */
+  .nav-links{
+    display: flex; /* FLEX */
+    gap: 8px;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a{
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .nav-links a:hover, .nav-links a.active{background:var(--color-primary);color:white}
+
+  /* Right - Action Buttons - Flex */
+  .nav-actions{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn{padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none}
+  .btn-outline{border:1px solid var(--color-border);color:var(--color-text)}
+  .btn-primary{background:var(--color-primary);color:white}
+
+  /* Hamburger - Hidden on Desktop */
+  .hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:8px}
+  .hamburger span{width:22px;height:2px;background:var(--color-primary);border-radius:2px;display:block}
+
+  /* Checkbox Hack for Mobile Menu - No JS */
+  #menu-toggle{display:none}
+
+  /* ===== RESPONSIVE - Mobile ===== */
+  @media(max-width: 768px){
+    .hamburger{display:flex}
+    .nav-links{
+      position: absolute;
+      top: 64px; left: 0; width: 100%;
+      background: white;
+      flex-direction: column; /* Vertical on mobile */
+      align-items: flex-start;
+      padding: 20px;
+      gap: 4px;
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: var(--shadow-md);
+      display: none; /* Hidden by default */
+    }
+    .nav-links a{width:100%;padding:12px 16px}
+    .nav-actions{display:none} /* Hide buttons on mobile for simplicity */
+
+    /* When checkbox checked, show menu */
+    #menu-toggle:checked ~ .nav-links{display:flex}
+  }
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <!-- Logo -->
+  <a href="index.html" class="logo">
+    <div class="logo-badge">VJ</div>
+    Vijendra
+  </a>
+
+  <!-- Checkbox for mobile toggle -->
+  <input type="checkbox" id="menu-toggle">
+  <label for="menu-toggle" class="hamburger">
+    <span></span><span></span><span></span>
+  </label>
+
+  <!-- Menu Links - Flex -->
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">🏠 Home</a></li>
+    <li><a href="about.html">👤 About</a></li>
+    <li><a href="resume.html">📄 Resume</a></li>
+    <li><a href="profile-product-card.html">🛍️ Products</a></li>
+    <li><a href="contact.html">✉️ Contact</a></li>
+    <li style="display:none" class="mobile-only"><a href="registration.html">Register</a></li>
+  </ul>
+
+  <!-- Actions - Flex -->
+  <div class="nav-actions">
+    <a href="contact.html" class="btn btn-outline">vijendra.xyz@example.com</a>
+    <a href="registration.html" class="btn btn-primary">Registration</a>
+  </div>
+</header>
+
+<main style="max-width:900px;margin:40px auto;padding:0 20px">
+  <div style="background:white;padding:30px;border-radius:16px;box-shadow:0 4px 15px rgba(0,0,0,0.05)">
+    <h1 style="font-family:Poppins;color:#1a237e">Responsive Menu Bar - Flexbox Demo</h1>
+    <p style="margin-top:10px;color:#6b7280;font-size:14px">Resize browser window to 768px or open on mobile to see hamburger menu. No JavaScript used - only display:flex + checkbox hack.</p>
+    
+    <h3 style="font-family:Poppins;color:#1a237e;margin-top:24px">Flexbox Properties Used:</h3>
+    <table style="width:100%;border-collapse:collapse;margin-top:10px;font-size:14px">
+      <tr style="background:#eef0ff"><th style="padding:10px;border:1px solid #e5e7eb;text-align:left">Property</th><th style="padding:10px;border:1px solid #e5e7eb;text-align:left">Where</th><th style="padding:10px;border:1px solid #e5e7eb;text-align:left">Kaam</th></tr>
+      <tr><td style="padding:8px;border:1px solid #e5e7eb">display:flex</td><td style="padding:8px;border:1px solid #e5e7eb">.navbar, .nav-links, .logo</td><td style="padding:8px;border:1px solid #e5e7eb">Flex container banao</td></tr>
+      <tr><td style="padding:8px;border:1px solid #e5e7eb">justify-content: space-between</td><td style="padding:8px;border:1px solid #e5e7eb">.navbar</td><td style="padding:8px;border:1px solid #e5e7eb">Logo left, menu center/right</td></tr>
+      <tr><td style="padding:8px;border:1px solid #e5e7eb">align-items: center</td><td style="padding:8px;border:1px solid #e5e7eb">.navbar, .nav-links</td><td style="padding:8px;border:1px solid #e5e7eb">Vertically center</td></tr>
+      <tr><td style="padding:8px;border:1px solid #e5e7eb">gap: 8px</td><td style="padding:8px;border:1px solid #e5e7eb">.nav-links</td><td style="padding:8px;border:1px solid #e5e7eb">Links ke beech gap - margin ki zarurat nahi</td></tr>
+      <tr><td style="padding:8px;border:1px solid #e5e7eb">flex-direction: column</td><td style="padding:8px;border:1px solid #e5e7eb">@media mobile</td><td style="padding:8px;border:1px solid #e5e7eb">Mobile pe vertical menu</td></tr>
+    </table>
+  </div>
+</main>
+
+</body>
+</html>

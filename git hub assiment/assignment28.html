@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Vijendra Maurya">
+<title>Overflow Fix - Vijendra Maurya</title>
+<link rel="stylesheet" href="design-tokens.css">
+<style>
+  body{font-family:var(--font-body);background:var(--color-bg);margin:0;padding:20px}
+  .card{background:white;padding:24px;border-radius:16px;max-width:800px;margin:20px auto;box-shadow:0 4px 15px rgba(0,0,0,0.05)}
+
+  /* ===== FIX 1: TABLE OVERFLOW ===== */
+  .table-wrapper{
+    width: 100%;
+    overflow-x: auto; /* Horizontal scroll dega, layout nahi todega */
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+  }
+  .table-wrapper table{
+    min-width: 600px; /* Table apni width lega, par wrapper scroll karega */
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th,td{padding:10px;border:1px solid #e5e7eb;white-space: nowrap;} /* nowrap se data nahi tootega */
+
+  /* ===== FIX 2: LONG TEXT / EMAIL OVERFLOW ===== */
+  .break-text{
+    overflow-wrap: break-word; /* Long word ko todega */
+    word-break: break-word;
+    max-width: 100%;
+  }
+
+  /* ===== FIX 3: IMAGE OVERFLOW ===== */
+  img{max-width: 100%; height: auto; display: block;} /* Image kabhi card se bahar nahi jayega */
+
+  /* ===== FIX 4: GLOBAL SAFETY (Sabse Important) ===== */
+  *{box-sizing: border-box;} /* Padding border ke andar, overflow ka main kaaran khatam */
+  body{overflow-x: hidden;} /* Horizontal overflow ko body level pe rok do */
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h2 style="font-family:var(--font-heading);color:var(--color-primary)">Fix 1: Table Overflow - BEFORE vs AFTER</h2>
+  <p><b>Problem:</b> Table ka width 900px tha, mobile pe screen se bahar nikal ke layout tod raha tha.</p>
+  <p><b>Fix:</b> Table ko <code>.table-wrapper</code> me dala with <code>overflow-x: auto;</code></p>
+
+  <div class="table-wrapper" style="margin-top:15px">
+    <table>
+      <tr><th>Size</th><th>Chest</th><th>Length</th><th>Price</th><th>Status</th><th>Action</th><th>Extra Column To Cause Overflow</th></tr>
+      <tr><td>M</td><td>40"</td><td>27"</td><td>₹599</td><td style="color:var(--color-success)">In Stock</td><td><button>Buy</button></td><td>More data causing overflow earlier</td></tr>
+      <tr><td>L</td><td>42"</td><td>28"</td><td>₹699</td><td style="color:var(--color-warning)">Low Stock</td><td><button>Buy</button></td><td>More data causing overflow earlier</td></tr>
+    </table>
+  </div>
+  <p style="font-size:12px;color:var(--color-muted);margin-top:8px">→ Ab mobile pe table scroll hoga, pura page nahi tootega.</p>
+</div>
+
+<div class="card">
+  <h2 style="font-family:var(--font-heading);color:var(--color-primary)">Fix 2: Long Email / Link Overflow</h2>
+  <p><b>Problem:</b> vijendra.maurya.very.long.email.address.bareilly.private.college@example.com</p>
+  <p class="break-text" style="background:#f0f2ff;padding:10px;border-radius:8px"><b>Fixed:</b> <span style="word-break: break-all;">vijendra.maurya.very.long.email.address.bareilly.private.college@example.com</span> — Ab ye line apne aap toot ke next line me aa gaya <code>overflow-wrap: break-word;</code> se.</p>
+</div>
+
+<div class="card">
+  <h2 style="font-family:var(--font-heading);color:var(--color-primary)">Fix 3: Image Overflow</h2>
+  <p><b>Fix:</b> <code>img{max-width:100%; height:auto;}</code> — Image kabhi bhi apne parent se badi nahi hogi.</p>
+  <img src="https://via.placeholder.com/1200x400" alt="Large image example" style="margin-top:10px;border-radius:8px">
+</div>
+
+</body>
+</html>
+* { box-sizing: border-box; }
+body { overflow-x: hidden; }

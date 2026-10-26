@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Vijendra Maurya">
+    <meta name="description" content="CSS Selector Types Demo by Vijendra Maurya BCA AI Bareilly">
+    <title>CSS Selectors Demo - Vijendra Maurya</title>
+
+    <style>
+        /* 1. ELEMENT SELECTOR - Tag name se */
+        body { font-family: Segoe UI, Arial; background: #f5f7fb; margin: 0; }
+        h1 { color: #1a237e; }
+        p { color: #555; line-height: 1.6; }
+
+        /* 2. CLASS SELECTOR - . dot se - Reusable */
+        .card { background: white; padding: 25px; border-radius: 16px; margin: 20px auto; max-width: 700px; box-shadow: 0 5px 20px rgba(0,0,0,0.06); }
+        .highlight { background: #e3f2fd; border-left: 4px solid #3949ab; padding: 10px; }
+
+        /* 3. ID SELECTOR - # hash se - Unique */
+        #main-header { background: white; padding: 15px 30px; display: flex; justify-content: space-between; border-bottom: 1px solid #e0e0e0; position: sticky; top: 0; }
+        #main-footer { background: #111; color: white; text-align: center; padding: 15px; }
+
+        /* 4. ATTRIBUTE SELECTOR - [attribute] se */
+        input[type="email"] { border: 2px solid #3949ab; background: #f0f2ff; }
+        input[type="text"] { border: 1px solid #ccc; }
+        a[href*="bareilly"] { color: #e91e63; font-weight: bold; }
+
+        /* 5. PSEUDO-CLASS SELECTOR - : colon se (Bonus 5th type) */
+        nav a:hover { background: #3949ab; color: white; border-radius: 20px; }
+        button:hover { background: #1a237e; cursor: pointer; }
+        li:first-child { font-weight: bold; color: #3949ab; }
+
+        /* 6. DESCENDANT SELECTOR - Space se (Bonus 6th type) */
+        .card ul li { margin-bottom: 6px; }
+        
+        /* Common */
+        input { width: 100%; padding: 10px; margin-top: 5px; border-radius: 8px; }
+        button { background: #3949ab; color: white; padding: 10px 20px; border: none; border-radius: 8px; margin-top: 10px; }
+        nav a { text-decoration: none; color: #333; padding: 6px 14px; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+<header id="main-header">
+    <h2 style="margin:0;">VJ Selectors</h2>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<main>
+    <div class="card">
+        <h1>CSS Selector Types Demo</h1>
+        <p>Created by <strong>Vijendra Maurya</strong> - BCA AI, Private College, Bareilly</p>
+        <p>Email: vijendra.xyz@example.com</p>
+        
+        <div class="highlight">
+            This box is styled using <b>.highlight</b> CLASS selector.
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>4 Selector Types Used:</h2>
+        <ul>
+            <li>1. ELEMENT: body, h1, p { } - Tag se direct</li>
+            <li>2. CLASS: .card, .highlight { } - Dot (.) se</li>
+            <li>3. ID: #main-header { } - Hash (#) se, unique element</li>
+            <li>4. ATTRIBUTE: input[type="email"] { } - Square bracket [] se</li>
+            <li>5. PSEUDO-CLASS: a:hover { } - Colon (:) se - Extra</li>
+            <li>6. DESCENDANT: .card ul li { } - Space se - Extra</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Attribute Selector Test</h2>
+        <label>Email Input (blue border) -> [type="email"]</label>
+        <input type="email" placeholder="vijendra.xyz@example.com">
+        
+        <label style="margin-top:15px; display:block;">Text Input (grey border) -> [type="text"]</label>
+        <input type="text" placeholder="Vijendra Maurya">
+        
+        <p style="margin-top:15px;">Link with bareilly word: <a href="https://bareilly-college.com">Bareilly College Link</a> -> styled by [href*="bareilly"]</p>
+        
+        <button>Hover on me (pseudo-class)</button>
+    </div>
+</main>
+
+<footer id="main-footer">
+    © 2026 Vijendra Maurya | BCA AI | 4 Selector Types Demo
+</footer>
+
+</body>
+</html>

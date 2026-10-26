@@ -1,0 +1,101 @@
+/* design-tokens.css - Created by Vijendra Maurya - BCA AI Bareilly */
+:root {
+  /* ===== COLOURS ===== */
+  --color-primary: #1a237e;      /* Deep Navy - Main */
+  --color-primary-light: #3949ab; /* Royal Blue - Hover/Accent */
+  --color-primary-soft: #eef0ff;  /* Light Blue - Tags/BG */
+  
+  --color-bg: #f8f9ff;           /* Page Background */
+  --color-surface: #ffffff;      /* Card Background */
+  --color-text: #2d2d3a;         /* Main Text */
+  --color-text-muted: #6b7280;   /* Secondary Text */
+  --color-border: #e5e7eb;       /* Border */
+  
+  --color-success: #2ecc71;      /* In Stock */
+  --color-warning: #f39c12;      /* Low Stock */
+  --color-danger: #ff3e6c;       /* Error/New Badge */
+
+  /* ===== FONT FAMILY ===== */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* ===== FONT SIZES - Type Scale ===== */
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;   /* Default body */
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 30px;    /* Main Heading */
+
+  /* ===== SPACING ===== */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  /* ===== RADIUS & SHADOW ===== */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+  --shadow-sm: 0 2px 10px rgba(0,0,0,0.05);
+  --shadow-md: 0 10px 30px rgba(0,0,0,0.08);
+}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Vijendra Maurya">
+    <title>Home - Using Design Tokens</title>
+
+    <!-- 1. Link Tokens First -->
+    <link rel="stylesheet" href="design-tokens.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- 2. Use Variables -->
+    <style>
+        body { 
+            background: var(--color-bg); 
+            color: var(--color-text); 
+            font-family: var(--font-body); 
+            font-size: var(--text-base);
+            margin: 0;
+        }
+        h1 { 
+            font-family: var(--font-heading); 
+            font-size: var(--text-3xl); 
+            color: var(--color-primary); 
+        }
+        .card {
+            background: var(--color-surface);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            max-width: 600px;
+            margin: var(--space-xl) auto;
+            border: 1px solid var(--color-border);
+        }
+        .badge {
+            background: var(--color-danger);
+            color: white;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-full);
+            font-size: var(--text-xs);
+        }
+        .badge.success { background: var(--color-success); }
+        a { color: var(--color-primary-light); }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Vijendra Maurya <span class="badge success">BCA AI</span></h1>
+    <p style="color: var(--color-text-muted); font-size: var(--text-sm);">Private College, Bareilly | vijendra.xyz@example.com</p>
+    <p style="margin-top: var(--space-md);">Ye page <b>design-tokens.css</b> use kar raha hai. Saare colours aur font sizes <code>var(--color-primary)</code> jaise variables se aaye hain.</p>
+    <p style="margin-top: var(--space-sm);">Fayda: Agar Sir bole colour change karo, to sirf tokens file me <code>--color-primary</code> change karo, poori website change ho jayegi.</p>
+</div>
+
+</body>
+</html>

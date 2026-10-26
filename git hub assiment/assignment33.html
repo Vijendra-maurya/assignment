@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Vijendra Maurya - BCA AI Bareilly">
+<title>Product Listing - flex-wrap - Vijendra</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--primary:#1a237e;--accent:#3949ab;--bg:#f8f9ff;--border:#e5e7eb;--muted:#6b7280}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--bg)}
+
+  .header{padding:20px 6%;background:white;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+  .header h1{font-family:'Poppins';color:var(--primary);font-size:20px}
+  .filter{display:flex;gap:8px}
+  .filter span{padding:6px 14px;border:1px solid var(--border);border-radius:999px;font-size:12px;font-weight:600;cursor:pointer}
+  .filter span.active{background:var(--primary);color:white;border-color:var(--primary)}
+
+  /* ===== MAIN FLEX-WRAP LAYOUT ===== */
+  .product-container{
+    padding:24px 6%;
+    display: flex; /* FLEX */
+    flex-wrap: wrap; /* KEY PROPERTY - Wrap to next line */
+    gap: 20px; /* Gap between cards */
+    justify-content: flex-start;
+  }
+
+  .product-card{
+    flex: 1 1 260px; /* Grow | Shrink | Base Width 260px */
+    max-width: 320px;
+    background:white;
+    border:1px solid var(--border);
+    border-radius:16px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    transition:0.2s;
+  }
+  .product-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.08)}
+
+  .img-box{height:200px;background:#f3f4f6;display:flex;align-items:center;justify-content:center;position:relative}
+  .img-box img{max-width:80%;max-height:80%}
+  .tag{position:absolute;top:10px;left:10px;background:#1a237e;color:white;font-size:10px;padding:4px 8px;border-radius:999px;font-weight:700}
+  .tag.sale{background:#dc2626;left:auto;right:10px}
+
+  .info{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .info h3{font-family:'Poppins';font-size:15px;color:#111827}
+  .info p{font-size:12px;color:var(--muted)}
+  .price-row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:10px}
+  .price{font-weight:700;color:var(--primary);font-size:16px}
+  .price del{color:var(--muted);font-weight:400;font-size:12px;margin-left:6px}
+  .btn{padding:8px 14px;background:var(--primary);color:white;border-radius:8px;text-decoration:none;font-size:12px;font-weight:600}
+
+  /* Responsive - flex-wrap automatically handles */
+  @media(max-width:600px){
+    .product-card{flex:1 1 100%;max-width:100%}
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>VM Store • Flex-Wrap Listing</h1>
+  <div class="filter">
+    <span class="active">All</span><span>T-Shirts</span><span>Hoodies</span><span>Bareilly Special</span>
+  </div>
+</div>
+
+<div class="product-container">
+  <!-- Card 1 -->
+  <div class="product-card">
+    <div class="img-box"><span class="tag">NEW</span><span class="tag sale">30% OFF</span><img src="https://via.placeholder.com/200?text=T-Shirt"></div>
+    <div class="info"><h3>Classic Cotton Tee</h3><p>BCA AI Collection - Bareilly</p><div class="price-row"><div class="price">₹599 <del>₹899</del></div><a href="#" class="btn">Add to Cart</a></div></div>
+  </div>
+  <!-- Card 2 -->
+  <div class="product-card">
+    <div class="img-box"><img src="https://via.placeholder.com/200?text=Hoodie"></div>
+    <div class="info"><h3>Premium Hoodie</h3><p>Winter Special - Fleece</p><div class="price-row"><div class="price">₹1299</div><a href="#" class="btn">Buy Now</a></div></div>
+  </div>
+  <!-- Card 3 -->
+  <div class="product-card">
+    <div class="img-box"><span class="tag">BESTSELLER</span><img src="https://via.placeholder.com/200?text=Cap"></div>
+    <div class="info"><h3>VM Cap</h3><p>By Vijendra Maurya - Private College</p><div class="price-row"><div class="price">₹349</div><a href="#" class="btn">Add to Cart</a></div></div>
+  </div>
+  <!-- Card 4 -->
+  <div class="product-card">
+    <div class="img-box"><img src="https://via.placeholder.com/200?text=Bag"></div>
+    <div class="info"><h3>College Backpack</h3><p>Waterproof - Laptop Space</p><div class="price-row"><div class="price">₹999</div><a href="#" class="btn">Add to Cart</a></div></div>
+  </div>
+  <!-- Card 5 -->
+  <div class="product-card">
+    <div class="img-box"><span class="tag">LIMITED</span><img src="https://via.placeholder.com/200?text=Mug"></div>
+    <div class="info"><h3>Code Mug</h3><p>display:flex - Developer Edition</p><div class="price-row"><div class="price">₹299</div><a href="#" class="btn">Add to Cart</a></div></div>
+  </div>
+  <!-- Card 6 -->
+  <div class="product-card">
+    <div class="img-box"><img src="https://via.placeholder.com/200?text=Sticker"></div>
+    <div class="info"><h3>Laptop Stickers Pack</h3><p>HTML CSS JS Design Tokens</p><div class="price-row"><div class="price">₹199</div><a href="#" class="btn">Add to Cart</a></div></div>
+  </div>
+</div>
+
+<div style="max-width:900px;margin:10px auto 30px;background:white;padding:20px;border-radius:12px;font-size:14px">
+  <h3 style="font-family:Poppins;color:#1a237e">flex-wrap Viva Note:</h3>
+  <pre style="background:#f8f9ff;padding:12px;border-radius:8px;margin-top:10px"><code>.product-container{
+  display: flex;
+  flex-wrap: wrap; /* Isse cards next line pe chale jate hain */
+  gap: 20px;
+}
+.product-card{
+  flex: 1 1 260px; /* Grow, Shrink, Base 260px */
+}</code></pre>
+  <p style="margin-top:10px;color:#6b7280">• <b>flex-wrap: nowrap</b> (default) hota to saare cards ek hi line me sikud jate.<br>• <b>flex-wrap: wrap</b> se screen chhoti hote hi cards apne aap neeche aa jate hain - responsive without media query.<br>• <b>flex: 1 1 260px</b> ka matlab: Card kam se kam 260px ka hoga, jagah milegi to badega, zarurat padegi to sikudega.</p>
+</div>
+
+</body>
+</html>

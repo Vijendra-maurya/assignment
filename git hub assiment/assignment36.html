@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Vijendra Maurya - BCA AI Bareilly">
+<title>Photo Gallery - CSS Grid - Vijendra</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--primary:#1a237e;--border:#e5e7eb;--bg:#f8f9ff}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--bg);padding:20px}
+  h1{font-family:'Poppins';color:var(--primary);text-align:center;margin:20px 0 6px}
+  .sub{text-align:center;color:#6b7280;font-size:13px;margin-bottom:24px}
+
+  /* ===== GALLERY - CSS GRID ===== */
+  .gallery{
+    max-width:1100px;
+    margin:0 auto;
+    display: grid; /* GRID START */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+    gap: 16px; /* Gap between photos */
+  }
+
+  .photo{
+    background:white;
+    border-radius:14px;
+    overflow:hidden;
+    border:1px solid var(--border);
+    aspect-ratio: 4 / 3; /* Same height */
+    position:relative;
+    transition:0.2s;
+  }
+  .photo:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.1)}
+  .photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .caption{
+    position:absolute;
+    bottom:0;left:0;width:100%;
+    background:linear-gradient(transparent, rgba(0,0,0,0.7));
+    color:white;
+    padding:20px 14px 10px;
+    font-size:12px;font-weight:600;
+  }
+
+  /* ===== ADVANCED - Spanning Example ===== */
+  .gallery-featured{
+    margin:40px auto 0;
+    max-width:1100px;
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:16px;
+  }
+  .featured{border-radius:14px;overflow:hidden;position:relative;border:1px solid var(--border);min-height:160px}
+  .featured img{width:100%;height:100%;object-fit:cover}
+  .span-2{grid-column: span 2} /* 2 columns wide */
+  .span-2-row{grid-row: span 2} /* 2 rows tall */
+
+  @media(max-width:700px){
+    .gallery-featured{grid-template-columns:repeat(2,1fr)}
+    .span-2{grid-column:span 2}
+  }
+</style>
+</head>
+<body>
+
+<h1>Photo Gallery - CSS Grid</h1>
+<p class="sub">By Vijendra Maurya | Module 8 | grid-template-columns + gap + auto-fit</p>
+
+<div class="gallery">
+  <div class="photo"><img src="https://picsum.photos/400/300?random=1" alt="1"><div class="caption">Bareilly College 1</div></div>
+  <div class="photo"><img src="https://picsum.photos/400/300?random=2" alt="2"><div class="caption">BCA AI Lab</div></div>
+  <div class="photo"><img src="https://picsum.photos/400/300?random=3" alt="3"><div class="caption">Project Work</div></div>
+  <div class="photo"><img src="https://picsum.photos/400/300?random=4" alt="4"><div class="caption">Vijendra Workspace</div></div>
+  <div class="photo"><img src="https://picsum.photos/400/300?random=5" alt="5"><div class="caption">Code Session</div></div>
+  <div class="photo"><img src="https://picsum.photos/400/300?random=6" alt="6"><div class="caption">Design Tokens</div></div>
+  <div class="photo"><img src="https://picsum.photos/400/300?random=7" alt="7"><div class="caption">Flexbox Module</div></div>
+  <div class="photo"><img src="https://picsum.photos/400/300?random=8" alt="8"><div class="caption">Grid Module</div></div>
+</div>
+
+<h2 style="font-family:Poppins;text-align:center;margin:40px 0 16px;color:var(--primary);font-size:18px">Featured Layout - grid-column: span 2</h2>
+<div class="gallery-featured">
+  <div class="featured span-2"><img src="https://picsum.photos/600/300?random=10"><div class="caption">Span 2 Columns - Main Project</div></div>
+  <div class="featured"><img src="https://picsum.photos/300/300?random=11"><div class="caption">Small 1</div></div>
+  <div class="featured"><img src="https://picsum.photos/300/300?random=12"><div class="caption">Small 2</div></div>
+  <div class="featured"><img src="https://picsum.photos/300/300?random=13"><div class="caption">Small 3</div></div>
+  <div class="featured span-2"><img src="https://picsum.photos/600/300?random=14"><div class="caption">Span 2 - Certificate</div></div>
+</div>
+
+<div style="max-width:900px;margin:30px auto;background:white;padding:20px;border-radius:12px;font-size:14px">
+  <h3 style="font-family:Poppins;color:#1a237e">Grid Viva Note:</h3>
+  <pre style="background:#f8f9ff;padding:12px;border-radius:8px;margin-top:10px"><code>.gallery{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}</code></pre>
+  <ul style="margin-left:20px;margin-top:10px;line-height:1.8">
+    <li><b>repeat(auto-fit, minmax(250px, 1fr))</b> = Jitni jagah hogi utne columns, har column kam se kam 250px, bachi jagah barabar bant do. Isse responsive bina media query ke.</li>
+    <li><b>gap</b> = Flex gap jaisa hi, par Grid me row+column dono ke liye.</li>
+    <li><b>grid-column: span 2</b> = Ek photo ko 2 column ka size dena (featured layout).</li>
+    <li>Flexbox 1D (row ya column), Grid 2D (row + column dono control).</li>
+  </ul>
+</div>
+
+</body>
+</html>

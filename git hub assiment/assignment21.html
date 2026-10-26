@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vijendra Maurya - BCA AI student from Bareilly. Lightly styled portfolio home page.">
+    <meta name="keywords" content="Vijendra Maurya, BCA AI, Bareilly">
+    <meta name="author" content="Vijendra Maurya">
+    <meta name="theme-color" content="#3949ab">
+    <title>Home - Vijendra Maurya | BCA AI Bareilly</title>
+
+    <style>
+        /* Light Styling - Week 4 to Week 5 Conversion */
+        :root { --primary: #3949ab; --light: #f5f7fb; --dark: #111; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--light); color: #333; line-height: 1.6; }
+        
+        /* Header - light style */
+        header { background: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e0e0e0; }
+        header h2 { color: var(--primary); font-size: 20px; }
+        nav a { text-decoration: none; color: #333; margin-left: 12px; font-weight: 600; font-size: 14px; padding: 6px 14px; border-radius: 20px; transition: 0.2s; }
+        nav a:hover, nav a.active { background: var(--primary); color: white; }
+
+        /* Main content */
+        main { max-width: 800px; margin: 30px auto; padding: 0 20px; }
+        .card { background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .hero { text-align: center; }
+        .hero img { width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--primary); }
+        .hero h1 { margin-top: 12px; color: var(--dark); font-size: 26px; }
+        .hero p { color: #666; }
+        .btn { display: inline-block; margin-top: 15px; background: var(--primary); color: white; padding: 10px 22px; border-radius: 8px; text-decoration: none; font-weight: bold; }
+
+        /* Small table - from your size chart */
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #e0e0e0; padding: 10px; text-align: left; font-size: 14px; }
+        th { background: #f0f2ff; color: var(--primary); }
+
+        footer { text-align: center; padding: 20px; color: #888; font-size: 13px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h2>VJ Portfolio</h2>
+    <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="registration.html">Registration</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="card hero">
+        <img src="https://via.placeholder.com/100" alt="Vijendra Maurya photo">
+        <h1>Vijendra Maurya</h1>
+        <p>BCA AI | Private College, Bareilly</p>
+        <p style="margin-top:10px;">This is my Week 4 HTML-only page converted into a lightly styled page for final submission. Email: vijendra.xyz@example.com</p>
+        <a href="about.html" class="btn">Know More</a>
+    </section>
+
+    <!-- Education - from Week 4 -->
+    <section class="card">
+        <h2 style="color: var(--primary);">Education</h2>
+        <ul style="margin-left: 20px; margin-top: 10px;">
+            <li><strong>College:</strong> Private College, Bareilly</li>
+            <li><strong>Course:</strong> BCA AI</li>
+            <li><strong>Semester:</strong> 3rd Semester</li>
+        </ul>
+    </section>
+
+    <!-- Light E-commerce Table - from Week 4 -->
+    <section class="card">
+        <h2 style="color: var(--primary);">Featured Product Size</h2>
+        <table>
+            <caption style="text-align:left; padding-bottom:8px; font-weight:bold;">T-Shirt Size Guide</caption>
+            <tr><th>Size</th><th>Chest</th><th>Stock</th></tr>
+            <tr><td>S</td><td>38"</td><td>In Stock</td></tr>
+            <tr><td>M</td><td>40"</td><td>Bestseller</td></tr>
+            <tr><td>L</td><td>42"</td><td>Low Stock</td></tr>
+        </table>
+    </section>
+</main>
+
+<footer>
+    © 2026 Created by Vijendra Maurya | BCA AI, Bareilly | vijendra.xyz@example.com
+</footer>
+
+</body>
+</html>

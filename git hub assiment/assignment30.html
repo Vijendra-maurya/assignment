@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Vijendra Maurya - BCA AI Bareilly">
+<meta name="description" content="Module 7 Flexbox - Profile and Product Card Component by Vijendra Maurya">
+<title>Module 7 Flexbox - Profile & Product Card - Vijendra</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--color-bg);font-family:var(--font-body);padding:20px;color:var(--color-text)}
+  h1{font-family:var(--font-heading);text-align:center;color:var(--color-primary);margin:20px 0 10px}
+  .sub{ text-align:center;color:var(--color-muted);font-size:14px;margin-bottom:30px}
+
+  .container{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:30px}
+
+  /* ===== CARD BASE - FLEXBOX ===== */
+  .card{
+    background:var(--color-surface);
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-sm);
+    overflow:hidden;
+    display:flex; /* FLEXBOX START */
+    transition:0.3s;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+
+  /* ===== 1. PROFILE CARD - Horizontal Flex ===== */
+  .profile-card{
+    flex-direction: row; /* Left image, Right content */
+    align-items: center; /* Vertically center */
+    padding: 24px;
+    gap: 24px;
+  }
+  .profile-img{
+    flex: 0 0 120px; /* Fixed size, no shrink */
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1a237e, #3949ab);
+    display:flex;align-items:center;justify-content:center;color:white;font-family:var(--font-heading);font-size:40px;
+  }
+  .profile-info{
+    flex: 1; /* Take remaining space */
+    display:flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .profile-meta{
+    display:flex; /* Nested Flex */
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .profile-meta span{
+    background:var(--color-primary-soft);color:var(--color-accent);padding:5px 12px;border-radius:999px;font-size:12px;font-weight:600
+  }
+  .profile-actions{
+    display:flex;
+    gap:10px;
+    margin-top:12px;
+  }
+  .btn{padding:10px 18px;border-radius:8px;font-weight:600;font-size:13px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+  .btn-primary{background:var(--color-primary);color:white}
+  .btn-secondary{background:white;color:var(--color-text);border:1px solid var(--color-border)}
+
+  /* ===== 2. PRODUCT CARD - Vertical + Horizontal Flex ===== */
+  .product-grid{
+    display:flex; /* Products in a row */
+    gap:20px;
+    flex-wrap: wrap; /* Wrap on mobile */
+  }
+  .product-card{
+    flex: 1 1 300px; /* Grow, Shrink, Base 300px */
+    flex-direction: column; /* Image top, content bottom */
+    padding:0;
+  }
+  .product-img{
+    height: 180px;
+    background:#f3f4f6;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+  }
+  .product-img img{max-width:80%;max-height:80%}
+  .badge{position:absolute;top:12px;left:12px;background:var(--color-danger);color:white;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:700}
+  .badge.success{background:var(--color-success);left:auto;right:12px}
+  .product-content{
+    padding:18px;
+    display:flex;
+    flex-direction:column;
+    flex:1; /* Push footer down */
+    gap:8px;
+  }
+  .product-title-row{
+    display:flex;
+    justify-content:space-between; /* Space between title and price */
+    align-items:flex-start;
+  }
+  .price{font-family:var(--font-heading);color:var(--color-primary);font-size:18px}
+  .size-options{
+    display:flex;
+    gap:6px;
+    margin-top:6px;
+  }
+  .size-options span{width:32px;height:32px;border:1px solid var(--color-border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;cursor:pointer}
+  .size-options span.active{background:var(--color-primary);color:white;border-color:var(--color-primary)}
+  .product-footer{
+    margin-top:auto; /* Push to bottom using flex */
+    display:flex;
+    gap:10px;
+  }
+  .product-footer .btn{flex:1}
+
+  @media(max-width:700px){
+    .profile-card{flex-direction:column;text-align:center}
+    .profile-meta,.profile-actions{justify-content:center}
+    .product-grid{flex-direction:column}
+  }
+</style>
+</head>
+<body>
+
+<h1>Module 7: Flexbox - Finished Component</h1>
+<p class="sub">By Vijendra Maurya | BCA AI, Private College, Bareilly | vijendra.xyz@example.com</p>
+
+<div class="container">
+
+  <!-- PROFILE CARD -->
+  <div class="card profile-card">
+    <div class="profile-img">VM</div>
+    <div class="profile-info">
+      <h2 style="font-family:var(--font-heading);color:var(--color-primary)">Vijendra Maurya</h2>
+      <p style="color:var(--color-muted);font-size:14px">BCA AI 3rd Semester • Private College, Bareilly • Web Developer</p>
+      <p style="font-size:14px;margin-top:4px">I build responsive websites with HTML5, CSS3, Design Tokens, Flexbox & Position. Passionate about clean UI and e-commerce tables.</p>
+      <div class="profile-meta">
+        <span>HTML5</span><span>CSS3</span><span>Flexbox</span><span>Design Tokens</span><span>Responsive</span>
+      </div>
+      <div class="profile-actions">
+        <a href="resume.html" class="btn btn-primary">View Resume</a>
+        <a href="contact.html" class="btn btn-secondary">Contact: vijendra.xyz@example.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT CARDS -->
+  <div class="product-grid">
+    <!-- Product 1 -->
+    <div class="card product-card">
+      <div class="product-img">
+        <span class="badge">NEW</span><span class="badge success">IN STOCK</span>
+        <img src="https://via.placeholder.com/200x150?text=T-Shirt" alt="T-shirt">
+      </div>
+      <div class="product-content">
+        <div class="product-title-row">
+          <h3 style="font-family:var(--font-heading);font-size:16px">Classic Fit T-Shirt</h3>
+          <span class="price">₹599</span>
+        </div>
+        <p style="font-size:13px;color:var(--color-muted)">Bareilly Collection - 100% Cotton, Bestseller</p>
+        <div class="size-options"><span>S</span><span class="active">M</span><span>L</span><span>XL</span></div>
+        <div class="product-footer">
+          <a href="#" class="btn btn-secondary">Size Chart</a>
+          <a href="#" class="btn btn-primary">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="card product-card">
+      <div class="product-img">
+        <span class="badge" style="background:var(--color-warning)">LOW STOCK</span>
+        <img src="https://via.placeholder.com/200x150?text=Hoodie" alt="Hoodie">
+      </div>
+      <div class="product-content">
+        <div class="product-title-row">
+          <h3 style="font-family:var(--font-heading);font-size:16px">Premium Hoodie</h3>
+          <span class="price">₹1299</span>
+        </div>
+        <p style="font-size:13px;color:var(--color-muted)">Winter Special - Fleece Inside</p>
+        <div class="size-options"><span>M</span><span class="active">L</span><span>XL</span></div>
+        <div class="product-footer">
+          <a href="#" class="btn btn-secondary">Details</a>
+          <a href="#" class="btn btn-primary">Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div style="max-width:1000px;margin:30px auto;background:white;padding:20px;border-radius:12px">
+  <h3 style="font-family:Poppins;color:#1a237e">Flexbox Used (Viva Note - Module 7):</h3>
+  <ul style="font-size:14px;margin-left:20px;margin-top:10px;line-height:1.8">
+    <li><b>display:flex;</b> - Card ko flex container banaya</li>
+    <li><b>flex-direction: row / column</b> - Profile horizontal, Product vertical</li>
+    <li><b>flex: 1 / flex: 0 0 120px</b> - Bacha hua space lena aur fixed size dena</li>
+    <li><b>justify-content: space-between</b> - Title aur Price ko alag-alag kone me</li>
+    <li><b>align-items: center</b> - Vertically center karna</li>
+    <li><b>gap: 20px</b> - Items ke beech gap</li>
+    <li><b>flex-wrap: wrap</b> - Mobile pe cards neeche aa jaye</li>
+    <li><b>margin-top: auto</b> - Flex me footer ko hamesha bottom pe push karna</li>
+  </ul>
+</div>
+
+</body>
+</html>

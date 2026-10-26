@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Vijendra Maurya - BCA AI Bareilly">
+<title>Reference Landing - Grid + Flexbox - Vijendra</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--primary:#1a237e;--accent:#3949ab;--bg:#f8f9ff;--surface:#fff;--border:#e5e7eb;--muted:#6b7280}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:#0f172a}
+
+  /* ===== PAGE LAYOUT - GRID (2D) ===== */
+  .page{
+    min-height:100vh;
+    display:grid;
+    grid-template-areas:
+      "nav"
+      "hero"
+      "features"
+      "products"
+      "footer";
+    grid-template-rows: 64px auto auto auto 60px;
+  }
+  .nav{grid-area:nav}
+  .hero{grid-area:hero}
+  .features{grid-area:features}
+  .products{grid-area:products}
+  .footer{grid-area:footer}
+
+  /* ===== NAVBAR - FLEXBOX (1D row) ===== */
+  .nav{
+    background:var(--surface);border-bottom:1px solid var(--border);
+    padding:0 6%;display:flex;justify-content:space-between;align-items:center;
+  }
+  .logo{font-family:'Poppins';font-weight:800;color:var(--primary);display:flex;gap:10px;align-items:center}
+  .logo-icon{width:36px;height:36px;background:var(--primary);color:white;border-radius:10px;display:flex;align-items:center;justify-content:center}
+  .nav-links{display:flex;gap:6px;list-style:none;align-items:center}
+  .nav-links a{padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600;text-decoration:none;color:var(--text)}
+  .nav-links a.active,.nav-links a:hover{background:var(--primary);color:white}
+
+  /* ===== HERO - FLEXBOX (1D - left/right) ===== */
+  .hero{
+    padding:50px 6%;background:var(--surface);
+    display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap;
+  }
+  .hero-left{flex:1 1 420px;display:flex;flex-direction:column;gap:14px;max-width:600px}
+  .hero-left h1{font-family:'Poppins';font-size:clamp(28px,4vw,44px);line-height:1.05;color:var(--primary)}
+  .hero-left h1 span{color:var(--accent)}
+  .hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+  .btn{padding:10px 18px;border-radius:10px;font-weight:600;font-size:13px;text-decoration:none;display:inline-flex}
+  .btn-primary{background:var(--primary);color:white}
+  .btn-outline{background:white;border:1px solid var(--border)}
+  .hero-right{flex:1 1 320px;display:flex;justify-content:center}
+  .mock{width:100%;max-width:360px;background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:12px}
+
+  /* ===== FEATURES - GRID (2D auto-fit) ===== */
+  .features{padding:30px 6%}
+  .features h2{font-family:'Poppins';color:var(--primary);margin-bottom:14px}
+  .feature-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:16px}
+  .f-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;display:flex;gap:12px;align-items:flex-start}
+
+  /* ===== PRODUCTS - GRID (2D auto-fit) ===== */
+  .products{padding:20px 6% 40px}
+  .products-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px}
+  .products-head h2{font-family:'Poppins';color:var(--primary)}
+  .product-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:16px}
+  .p-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+  .p-img{aspect-ratio:4/3;background:#f3f4f6;display:flex;align-items:center;justify-content:center;font-size:28px}
+  .p-info{padding:12px;display:flex;flex-direction:column;gap:4px;flex:1}
+  .p-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:8px}
+
+  /* ===== FOOTER - FLEXBOX (1D) ===== */
+  .footer{padding:0 6%;background:var(--surface);border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--muted)}
+
+  /* ===== RESPONSIVE - 2 BREAKPOINTS ===== */
+  @media(max-width:768px){
+    .hero{flex-direction:column;align-items:stretch;padding:30px 6%}
+    .feature-grid,.product-grid{grid-template-columns:1fr 1fr}
+    .nav-links{display:none}
+  }
+  @media(max-width:480px){
+    .feature-grid,.product-grid{grid-template-columns:1fr}
+    .hero-actions{flex-direction:column}
+    .btn{justify-content:center}
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <nav class="nav">
+    <div class="logo"><div class="logo-icon">VM</div> Vijendra Reference</div>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Home - Flex</a></li>
+      <li><a href="#">Features - Grid</a></li>
+      <li><a href="#">Products - Grid</a></li>
+      <li><a href="#" class="btn-primary" style="padding:8px 14px;border-radius:999px">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-left">
+      <span style="background:#eef2ff;padding:4px 10px;border-radius:999px;font-size:10px;font-weight:700;color:var(--primary);align-self:flex-start">REFERENCE: GRID + FLEXBOX APPROPRIATELY</span>
+      <h1>When to use <span>Flexbox</span> vs <span>Grid</span></h1>
+      <p style="color:var(--muted);font-size:14px">Flexbox = 1D (row OR column) — Navbar, Hero, Buttons, Card footer. Grid = 2D (row AND column) — Features, Products, Page layout, Gallery.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary">Flexbox: Hero Layout</a>
+        <a href="#" class="btn btn-outline">Grid: Product Layout</a>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">
+        <span style="font-size:11px;background:white;border:1px solid var(--border);padding:4px 8px;border-radius:999px">display:flex</span>
+        <span style="font-size:11px;background:white;border:1px solid var(--border);padding:4px 8px;border-radius:999px">justify-content:space-between</span>
+        <span style="font-size:11px;background:#eef2ff;padding:4px 8px;border-radius:999px;font-weight:700;color:var(--primary)">display:grid</span>
+        <span style="font-size:11px;background:#eef2ff;padding:4px 8px;border-radius:999px;font-weight:700;color:var(--primary)">repeat(auto-fit, minmax)</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="mock">
+        <div style="display:flex;justify-content:space-between;align-items:center"><b style="font-family:Poppins;color:var(--primary)">Vijendra Maurya</b><span style="font-size:10px;background:var(--primary);color:white;padding:2px 6px;border-radius:999px">BCA AI</span></div>
+        <p style="font-size:12px;color:var(--muted)">This mock uses Flexbox column inside Grid page. Outer page Grid, inner hero Flex — Reference pattern.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="background:white;border:1px solid var(--border);padding:10px;border-radius:8px;text-align:center;font-size:11px"><b>Flex</b><br>1D</div><div style="background:var(--primary);color:white;padding:10px;border-radius:8px;text-align:center;font-size:11px"><b>Grid</b><br>2D</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <h2>Features - Grid (2D) - repeat(auto-fit, minmax)</h2>
+    <div class="feature-grid">
+      <div class="f-card"><div style="width:36px;height:36px;background:var(--bg);border-radius:8px;display:flex;align-items:center;justify-content:center">🧭</div><div><b>Navbar - Flex</b><br><span style="font-size:12px;color:var(--muted)">1D row, space-between, align center</span></div></div>
+      <div class="f-card"><div style="width:36px;height:36px;background:var(--bg);border-radius:8px;display:flex;align-items:center;justify-content:center">🦸</div><div><b>Hero - Flex</b><br><span style="font-size:12px;color:var(--muted)">1D left/right, flex:1 1 400px</span></div></div>
+      <div class="f-card"><div style="width:36px;height:36px;background:#eef2ff;border-radius:8px;display:flex;align-items:center;justify-content:center">🔳</div><div><b>Features - Grid</b><br><span style="font-size:12px;color:var(--muted)">2D auto-fit, no media query needed</span></div></div>
+      <div class="f-card"><div style="width:36px;height:36px;background:#eef2ff;border-radius:8px;display:flex;align-items:center;justify-content:center">🛍️</div><div><b>Products - Grid</b><br><span style="font-size:12px;color:var(--muted)">2D auto reflow, minmax(240px,1fr)</span></div></div>
+    </div>
+  </section>
+
+  <section class="products">
+    <div class="products-head"><h2>Products - Grid Auto Reflow</h2><span style="font-size:12px;color:var(--muted)">Flex inside Card: foot with margin-top:auto</span></div>
+    <div class="product-grid">
+      <div class="p-card"><div class="p-img">👕</div><div class="p-info"><b>Classic Tee</b><span style="font-size:11px;color:var(--muted)">Grid outer, Flex inner</span><div class="p-foot"><b style="color:var(--primary)">₹599</b><a href="#" class="btn btn-primary" style="padding:6px 10px;font-size:11px">Add</a></div></div></div>
+      <div class="p-card"><div class="p-img">🧥</div><div class="p-info"><b>Hoodie</b><span style="font-size:11px;color:var(--muted)">Grid auto-fit</span><div class="p-foot"><b style="color:var(--primary)">₹1299</b><a href="#" class="btn btn-primary" style="padding:6px 10px;font-size:11px">Buy</a></div></div></div>
+      <div class="p-card"><div class="p-img">🎒</div><div class="p-info"><b>Backpack</b><span style="font-size:11px;color:var(--muted)">2D layout</span><div class="p-foot"><b style="color:var(--primary)">₹999</b><a href="#" class="btn btn-primary" style="padding:6px 10px;font-size:11px">Add</a></div></div></div>
+      <div class="p-card"><div class="p-img">☕</div><div class="p-info"><b>Code Mug</b><span style="font-size:11px;color:var(--muted)">Reference project</span><div class="p-foot"><b style="color:var(--primary)">₹299</b><a href="#" class="btn btn-primary" style="padding:6px 10px;font-size:11px">Add</a></div></div></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>© 2026 Vijendra Maurya - BCA AI Bareilly - Reference: Grid + Flex Appropriately</span>
+    <span><b>Grid:</b> Page, Features, Products | <b>Flex:</b> Nav, Hero, Footer, Card</span>
+  </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Vijendra Maurya - BCA AI Bareilly">
+<title>Responsive with Breakpoints - Vijendra</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--primary:#1a237e;--bg:#f1f5f9;--surface:#fff;--border:#e2e8f0;--muted:#64748b}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--bg)}
+
+  .layout{
+    min-height:100vh;
+    display:grid;
+    grid-template-areas:"header header" "sidebar products" "footer footer";
+    grid-template-columns: 280px 1fr;
+    grid-template-rows: 64px 1fr 52px;
+    gap:16px; padding:16px;
+  }
+  .header{grid-area:header;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:0 20px;display:flex;justify-content:space-between;align-items:center}
+  .sidebar{grid-area:sidebar;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px}
+  .products-area{grid-area:products;display:flex;flex-direction:column;gap:16px}
+  .toolbar{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
+  .product-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:16px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+  .img{height:160px;background:#f8fafc;display:flex;align-items:center;justify-content:center;font-size:28px}
+  .info{padding:12px;display:flex;flex-direction:column;gap:4px;flex:1}
+  .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:8px}
+  .footer{grid-area:footer;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:0 20px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted)}
+
+  /* ===== MODULE 9: 2+ BREAKPOINTS ADDED ===== */
+
+  /* BREAKPOINT 1: TABLET - 768px to 1024px */
+  @media(max-width: 1024px){
+    .layout{grid-template-columns:220px 1fr;gap:12px;padding:12px}
+    .product-grid{grid-template-columns:repeat(auto-fit, minmax(200px, 1fr))}
+    .header input{width:140px}
+  }
+
+  /* BREAKPOINT 2: MOBILE - up to 768px */
+  @media(max-width: 768px){
+    .layout{
+      grid-template-areas:"header" "sidebar" "products" "footer";
+      grid-template-columns:1fr;
+      grid-template-rows:auto auto auto auto;
+    }
+    .sidebar{flex-direction:row;flex-wrap:wrap}
+    .sidebar .filter-group{flex:1 1 160px}
+    .toolbar{flex-direction:column;align-items:flex-start}
+    .product-grid{grid-template-columns:1fr 1fr;gap:10px}
+    .header{flex-wrap:wrap;padding:12px;gap:8px}
+  }
+
+  /* BREAKPOINT 3: SMALL MOBILE - up to 480px (Extra for A+ grade) */
+  @media(max-width: 480px){
+    .layout{padding:8px;gap:8px}
+    .product-grid{grid-template-columns:1fr}
+    .img{height:130px}
+    .header input{display:none}
+  }
+
+  /* DEBUG BADGE - Kaunsa breakpoint active hai dikhega */
+  .breakpoint-badge{position:fixed;bottom:10px;right:10px;background:var(--primary);color:white;padding:6px 12px;border-radius:999px;font-size:11px;font-weight:700;z-index:100}
+  .bp-desktop{display:inline} .bp-tablet{display:none} .bp-mobile{display:none} .bp-small{display:none}
+  @media(max-width:1024px){.bp-desktop{display:none}.bp-tablet{display:inline}}
+  @media(max-width:768px){.bp-tablet{display:none}.bp-mobile{display:inline}}
+  @media(max-width:480px){.bp-mobile{display:none}.bp-small{display:inline}}
+</style>
+</head>
+<body>
+
+<div class="layout">
+  <header class="header">
+    <b style="font-family:Poppins;color:var(--primary)">VM Store - Breakpoints Added</b>
+    <input placeholder="Search..." style="padding:8px 14px;border:1px solid var(--border);border-radius:999px;font-size:12px">
+    <span style="font-size:12px;font-weight:600">Vijendra Maurya</span>
+  </header>
+
+  <aside class="sidebar">
+    <div class="filter-group"><b style="font-family:Poppins;font-size:13px;color:var(--primary)">Category</b>
+      <div style="padding:8px;border:1px solid var(--border);border-radius:8px;font-size:12px;background:var(--primary);color:white">All Products</div>
+      <div style="padding:8px;border:1px solid var(--border);border-radius:8px;font-size:12px;background:var(--bg)">T-Shirts</div>
+      <div style="padding:8px;border:1px solid var(--border);border-radius:8px;font-size:12px;background:var(--bg)">Hoodies</div>
+    </div>
+    <div class="filter-group"><b>Breakpoint Info</b>
+      <div style="font-size:11px;background:var(--bg);padding:10px;border-radius:8px;line-height:1.6">
+        Desktop: >1024px - 280px sidebar<br>
+        Tablet: 768-1024px - 220px<br>
+        Mobile: <768px - stacked<br>
+        Small: <480px - 1 column grid
+      </div>
+    </div>
+  </aside>
+
+  <main class="products-area">
+    <div class="toolbar">
+      <h2 style="font-family:Poppins;color:var(--primary);font-size:16px">Products - Auto Reflow + Breakpoints</h2>
+      <span style="font-size:11px;color:var(--muted)">Resize window to test</span>
+    </div>
+    <div class="product-grid">
+      <div class="card"><div class="img">👕</div><div class="info"><b>Classic Tee</b><span style="font-size:11px;color:var(--muted)">₹599 - 480px pe 1 col</span><div class="foot"><b style="color:var(--primary)">₹599</b><a href="#" style="padding:6px 10px;background:var(--primary);color:white;border-radius:6px;font-size:11px">Add</a></div></div></div>
+      <div class="card"><div class="img">🧥</div><div class="info"><b>Hoodie</b><span style="font-size:11px;color:var(--muted)">₹1299 - 768px pe 2 col</span><div class="foot"><b style="color:var(--primary)">₹1299</b><a href="#" style="padding:6px 10px;background:var(--primary);color:white;border-radius:6px;font-size:11px">Buy</a></div></div></div>
+      <div class="card"><div class="img">🎒</div><div class="info"><b>Backpack</b><span style="font-size:11px;color:var(--muted)">₹999 - 1024px pe 3 col</span><div class="foot"><b style="color:var(--primary)">₹999</b><a href="#" style="padding:6px 10px;background:var(--primary);color:white;border-radius:6px;font-size:11px">Add</a></div></div></div>
+      <div class="card"><div class="img">☕</div><div class="info"><b>Code Mug</b><span style="font-size:11px;color:var(--muted)">₹299 - Desktop 4 col</span><div class="foot"><b style="color:var(--primary)">₹299</b><a href="#" style="padding:6px 10px;background:var(--primary);color:white;border-radius:6px;font-size:11px">Add</a></div></div></div>
+    </div>
+  </main>
+
+  <footer class="footer"><span>© 2026 Vijendra - Breakpoints Tested</span><span>Desktop | Tablet | Mobile | Small</span></footer>
+</div>
+
+<div class="breakpoint-badge">
+  <span class="bp-desktop">🖥️ DESKTOP >1024px</span>
+  <span class="bp-tablet">💻 TABLET 768-1024px</span>
+  <span class="bp-mobile">📱 MOBILE <768px</span>
+  <span class="bp-small">📱 SMALL <480px - 1 COL</span>
+</div>
+
+</body>
+</html>

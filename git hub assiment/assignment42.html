@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Vijendra Maurya - BCA AI Bareilly">
+<title>Audited & Fixed - Responsive Issues - Vijendra</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--primary:#1a237e;--bg:#f1f5f9;--surface:#fff;--border:#e2e8f0;--muted:#64748b}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:#0f172a;line-height:1.5}
+  img{max-width:100%;display:block} /* FIX: Prevent overflow */
+
+  .layout{
+    min-height:100vh;
+    display:grid;
+    grid-template-areas:"header header" "sidebar products" "footer footer";
+    grid-template-columns: 280px 1fr;
+    grid-template-rows: 64px 1fr 52px;
+    gap:16px; padding:16px;
+  }
+  .header{grid-area:header;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:0 16px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .logo{font-family:'Poppins';font-weight:700;color:var(--primary);white-space:nowrap}
+  .search-wrap{flex:1;max-width:280px;display:flex} /* FIX 1 */
+  .search-wrap input{width:100%;padding:8px 14px;border:1px solid var(--border);border-radius:999px;font-size:13px}
+  .sidebar{grid-area:sidebar;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px}
+  .products-area{grid-area:products;display:flex;flex-direction:column;gap:16px;min-width:0} /* FIX 2: min-width 0 prevents grid blowout */
+  .toolbar{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px} /* FIX 5 */
+  .toolbar h2{font-family:'Poppins';font-size:clamp(14px,2.5vw,18px);color:var(--primary)} /* FIX 6: fluid */
+  .product-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:16px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+  .img{aspect-ratio:4/3;background:#f8fafc;display:flex;align-items:center;justify-content:center;font-size:28px;position:relative} /* FIX 4 */
+  .info{padding:12px;display:flex;flex-direction:column;gap:4px;flex:1;min-width:0}
+  .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:8px;gap:8px}
+  .btn{padding:6px 12px;background:var(--primary);color:white;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap}
+  .footer{grid-area:footer;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);flex-wrap:wrap;gap:8px}
+
+  /* ===== FIXES - BREAKPOINTS ===== */
+  @media(max-width:1024px){
+    .layout{grid-template-columns:200px 1fr}
+    .product-grid{grid-template-columns:repeat(auto-fit, minmax(200px, 1fr))}
+  }
+  @media(max-width:768px){ /* FIX 3: Sidebar stack */
+    .layout{grid-template-areas:"header" "sidebar" "products" "footer";grid-template-columns:1fr;grid-template-rows:auto auto auto auto}
+    .sidebar{flex-direction:row;flex-wrap:wrap}
+    .sidebar .group{flex:1 1 160px}
+    .product-grid{grid-template-columns:repeat(2, minmax(0,1fr))} /* FIX 2 */
+    .search-wrap{max-width:100%;order:3;flex-basis:100%}
+  }
+  @media(max-width:480px){
+    .layout{padding:8px;gap:8px}
+    .product-grid{grid-template-columns:1fr}
+    .search-wrap{display:none}
+    .img{aspect-ratio:16/10}
+  }
+  .badge{position:fixed;bottom:10px;right:10px;background:var(--primary);color:white;padding:6px 12px;border-radius:999px;font-size:11px;z-index:100}
+</style>
+</head>
+<body>
+
+<div class="layout">
+  <header class="header">
+    <div class="logo">VM Store - AUDITED</div>
+    <div class="search-wrap"><input placeholder="Search products..."></div>
+    <span style="font-size:12px;font-weight:600;white-space:nowrap">Vijendra Maurya</span>
+  </header>
+
+  <aside class="sidebar">
+    <div class="group"><b style="font-family:Poppins;font-size:12px;color:var(--primary)">AUDIT FIXES APPLIED</b>
+      <div style="font-size:11px;line-height:1.7;background:var(--bg);padding:10px;border-radius:8px;margin-top:6px">
+        1. Search flex:1 max-width<br>
+        2. min-width:0 on grid items<br>
+        3. Sidebar row on mobile<br>
+        4. aspect-ratio not fixed height<br>
+        5. toolbar flex-wrap<br>
+        6. clamp() typography
+      </div>
+    </div>
+    <div class="group"><b style="font-size:12px">Category</b><div style="margin-top:6px;display:flex;flex-direction:column;gap:6px"><div style="padding:8px;background:var(--primary);color:white;border-radius:8px;font-size:12px">All Products</div><div style="padding:8px;background:var(--bg);border:1px solid var(--border);border-radius:8px;font-size:12px">T-Shirts</div></div></div>
+  </aside>
+
+  <main class="products-area">
+    <div class="toolbar">
+      <h2>Fixed Product Grid - No Horizontal Scroll</h2>
+      <span style="font-size:11px;color:var(--muted)">Tested: 320px, 768px, 1200px</span>
+    </div>
+    <div class="product-grid">
+      <div class="card"><div class="img">👕</div><div class="info"><b>Classic Tee</b><span style="font-size:11px;color:var(--muted)">Fixed aspect-ratio</span><div class="foot"><b style="color:var(--primary)">₹599</b><a href="#" class="btn">Add</a></div></div></div>
+      <div class="card"><div class="img">🧥</div><div class="info"><b>Premium Hoodie With Very Long Name That Wraps</b><span style="font-size:11px;color:var(--muted)">Tests min-width:0 fix</span><div class="foot"><b style="color:var(--primary)">₹1299</b><a href="#" class="btn">Buy</a></div></div></div>
+      <div class="card"><div class="img">🎒</div><div class="info"><b>Backpack</b><span style="font-size:11px;color:var(--muted)">No overflow now</span><div class="foot"><b style="color:var(--primary)">₹999</b><a href="#" class="btn">Add</a></div></div></div>
+      <div class="card"><div class="img">☕</div><div class="info"><b>Code Mug</b><span style="font-size:11px;color:var(--muted)">Fluid clamp() title</span><div class="foot"><b style="color:var(--primary)">₹299</b><a href="#" class="btn">Add</a></div></div></div>
+    </div>
+  </main>
+
+  <footer class="footer"><span>© 2026 Audited & Fixed - Responsive Issues Resolved</span><span>Before: 6 issues | After: 0 issues | Tested 3 sizes</span></footer>
+</div>
+
+<div class="badge">FIXED ✓ - No Overflow</div>
+
+</body>
+</html>

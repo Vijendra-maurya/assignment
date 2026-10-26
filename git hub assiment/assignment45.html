@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Vijendra Maurya - BCA AI Private College Bareilly">
+<meta name="description" content="Final Fully Responsive Landing Page - Grid + Flexbox - Module 9 - Vijendra Maurya">
+<title>Final Landing - Fully Responsive - Vijendra Maurya</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#1a237e;--accent:#3949ab;--bg:#f8f9ff;--surface:#fff;--border:#e5e7eb;--text:#0f172a;--muted:#64748b;
+    --radius:16px;--shadow:0 8px 30px rgba(26,35,126,0.07);--max:1200px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  a{text-decoration:none;color:inherit}
+  img{max-width:100%;display:block}
+  .container{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  /* ===== HEADER - FLEX ===== */
+  .site-header{height:68px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:50}
+  .logo{font-family:'Poppins';font-weight:800;font-size:17px;color:var(--primary);display:flex;gap:10px;align-items:center}
+  .logo-icon{width:36px;height:36px;background:var(--primary);color:white;border-radius:10px;display:flex;align-items:center;justify-content:center}
+  .main-nav{display:flex;gap:6px;list-style:none;align-items:center}
+  .main-nav a{padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600}
+  .main-nav a.active,.main-nav a:hover{background:var(--primary);color:white}
+  .nav-actions{display:flex;gap:8px;align-items:center}
+  #check{display:none}.ham{display:none;flex-direction:column;gap:4px;cursor:pointer}.ham span{width:22px;height:2px;background:var(--primary);display:block;border-radius:2px}
+
+  /* ===== HERO - FLEX ===== */
+  .hero{padding:60px 24px;background:var(--surface);display:flex;justify-content:space-between;align-items:center;gap:40px}
+  .hero-content{flex:1 1 560px;max-width:600px;display:flex;flex-direction:column;gap:14px}
+  .pill{align-self:flex-start;background:#eef2ff;color:var(--primary);padding:5px 12px;border-radius:999px;font-size:11px;font-weight:700}
+  .hero-content h1{font-family:'Poppins';font-size:clamp(32px,4vw,48px);line-height:1.05;color:var(--primary)}
+  .hero-content h1 span{color:var(--accent)}
+  .hero-content p{font-size:15px;color:var(--muted)}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{padding:11px 18px;border-radius:10px;font-weight:600;font-size:13px;display:inline-flex;align-items:center;justify-content:center}
+  .btn-primary{background:var(--primary);color:white}.btn-outline{background:white;border:1px solid var(--border)}
+  .hero-visual{flex:1 1 380px;display:flex;justify-content:center}
+  .visual-card{width:100%;max-width:380px;background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow)}
+
+  /* ===== FEATURES - GRID ===== */
+  .features{padding:40px 24px}
+  .features h2,.products h2{font-family:'Poppins';font-size:clamp(20px,2.5vw,28px);color:var(--primary);margin-bottom:18px}
+  .features-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:16px}
+  .f-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;display:flex;gap:12px;align-items:flex-start;transition:0.2s}
+  .f-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .f-icon{width:40px;height:40px;background:var(--bg);border-radius:10px;display:flex;align-items:center;justify-content:center;flex:0 0 40px}
+
+  /* ===== PRODUCTS - GRID ===== */
+  .products{padding:20px 24px 50px;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .products-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px}
+  .product-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:18px}
+  .p-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:0.2s;min-width:0}
+  .p-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .p-img{aspect-ratio:4/3;background:#f3f4f6;display:flex;align-items:center;justify-content:center;font-size:30px;position:relative}
+  .badge{position:absolute;top:10px;left:10px;background:var(--primary);color:white;font-size:10px;padding:4px 8px;border-radius:999px;font-weight:700}
+  .p-info{padding:14px;display:flex;flex-direction:column;gap:4px;flex:1;min-width:0}
+  .p-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:10px;gap:8px}
+  .price{font-weight:700;color:var(--primary)}
+
+  /* ===== FOOTER - FLEX ===== */
+  .site-footer{padding:18px 24px;background:var(--surface);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--muted)}
+
+  /* ===== RESPONSIVE - 2+ BREAKPOINTS (Module 9) ===== */
+  @media(max-width:1024px){
+    .container{padding:0 20px}
+    .product-grid{grid-template-columns:repeat(auto-fit, minmax(220px, 1fr))}
+    .hero{padding:40px 20px;gap:24px}
+  }
+  @media(max-width:768px){
+    .ham{display:flex}
+    .main-nav{position:absolute;top:68px;left:0;width:100%;background:white;flex-direction:column;align-items:flex-start;padding:16px 24px;display:none;border-bottom:1px solid var(--border);box-shadow:var(--shadow)}
+    #check:checked ~ .main-nav{display:flex}
+    .nav-actions{display:none}
+    .hero{flex-direction:column;align-items:stretch;padding:30px 20px}
+    .features-grid{grid-template-columns:1fr 1fr}
+    .product-grid{grid-template-columns:repeat(2, minmax(0, 1fr))}
+    .products-head{flex-direction:column;align-items:flex-start}
+  }
+  @media(max-width:480px){
+    .container{padding:0 14px}
+    .site-header{padding:0 14px}
+    .hero{padding:24px 14px}
+    .hero-actions{flex-direction:column}
+    .btn{width:100%}
+    .features{padding:24px 14px}
+    .features-grid,.product-grid{grid-template-columns:1fr}
+    .products{padding:24px 14px 30px}
+    .site-footer{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header container">
+  <div class="logo"><div class="logo-icon">VM</div> Vijendra Maurya</div>
+  <input type="checkbox" id="check"><label for="check" class="ham"><span></span><span></span><span></span></label>
+  <ul class="main-nav">
+    <li><a href="#" class="active">Home - Responsive</a></li>
+    <li><a href="#features">Features - Grid</a></li>
+    <li><a href="#products">Store - Grid</a></li>
+    <li><a href="dashboard-named-areas.html">Dashboard - Areas</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="login-centered.html" class="btn btn-outline" style="padding:8px 14px">Login - Flex Center</a>
+    <a href="final-integrated-project.html" class="btn btn-primary" style="padding:8px 14px">Final Integrated</a>
+  </div>
+</header>
+
+<section class="hero container">
+  <div class="hero-content">
+    <span class="pill">FINAL FULLY RESPONSIVE - MODULE 9 - BCA AI BAREILLY</span>
+    <h1>Built with <span>Grid + Flexbox</span> Appropriately</h1>
+    <p>Hi, I'm Vijendra Maurya - BCA AI. This final landing page is fully responsive: Desktop 1200px (4 cols), Tablet 768px (2 cols), Mobile 480px (1 col). Outer layout Grid, inner components Flexbox. No horizontal scroll, tested on 3 sizes.</p>
+    <div class="hero-actions">
+      <a href="#products" class="btn btn-primary">View Products - Grid auto-fit</a>
+      <a href="#features" class="btn btn-outline">Why Grid + Flex? →</a>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
+      <span style="font-size:11px;background:white;border:1px solid var(--border);padding:4px 8px;border-radius:999px">Grid: Page, Features, Products</span>
+      <span style="font-size:11px;background:white;border:1px solid var(--border);padding:4px 8px;border-radius:999px">Flex: Nav, Hero, Footer</span>
+      <span style="font-size:11px;background:#eef2ff;padding:4px 8px;border-radius:999px;color:var(--primary);font-weight:700">clamp() + auto-fit + aspect-ratio</span>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="visual-card">
+      <div style="display:flex;justify-content:space-between;align-items:center"><b style="font-family:Poppins;color:var(--primary)">Responsive Audit ✓</b><span style="font-size:10px;background:var(--primary);color:white;padding:3px 8px;border-radius:999px">FIXED</span></div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.6;background:white;padding:10px;border-radius:10px;border:1px solid var(--border)">
+        <b>Breakpoints:</b><br>
+        >1024px: Desktop - 4 cols<br>
+        768px: Tablet - 2 cols, nav hamburger<br>
+        480px: Mobile - 1 col, full stack<br>
+        Fixes: min-width:0, aspect-ratio, flex-wrap, clamp()
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div style="background:white;border:1px solid var(--border);padding:10px;border-radius:8px;text-align:center"><b style="font-size:12px">320px</b><br><span style="font-size:10px;color:var(--muted)">1 col ✓</span></div>
+        <div style="background:white;border:1px solid var(--border);padding:10px;border-radius:8px;text-align:center"><b style="font-size:12px">768px</b><br><span style="font-size:10px;color:var(--muted)">2 col ✓</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features container" id="features">
+  <h2>Why Grid + Flexbox? - Reference</h2>
+  <div class="features-grid">
+    <div class="f-card"><div class="f-icon">🧭</div><div><b>Navbar - Flex</b><br><span style="font-size:12px;color:var(--muted)">1D row, justify-content:space-between, align-items:center</span></div></div>
+    <div class="f-card"><div class="f-icon">🦸</div><div><b>Hero - Flex</b><br><span style="font-size:12px;color:var(--muted)">flex:1 1 560px + flex:1 1 380px, column on mobile</span></div></div>
+    <div class="f-card"><div class="f-icon">🔳</div><div><b>Features - Grid</b><br><span style="font-size:12px;color:var(--muted)">repeat(auto-fit, minmax(240px,1fr)), auto reflow</span></div></div>
+    <div class="f-card"><div class="f-icon">📱</div><div><b>Responsive - 3 Breakpoints</b><br><span style="font-size:12px;color:var(--muted)">1024px, 768px, 480px — tested, no overflow</span></div></div>
+  </div>
+</section>
+
+<section class="products container" id="products">
+  <div class="products-head">
+    <h2>Product Grid - Fully Responsive - Auto-fit</h2>
+    <span style="font-size:12px;color:var(--muted)">Resize: 1200→900→600→360 test done</span>
+  </div>
+  <div class="product-grid">
+    <div class="p-card"><div class="p-img">👕<span class="badge">NEW</span></div><div class="p-info"><b>Classic Cotton Tee - BCA AI</b><span style="font-size:12px;color:var(--muted)">Desktop 4col, Tablet 2col, Mobile 1col</span><div class="p-foot"><span class="price">₹599</span><a href="#" class="btn btn-primary" style="padding:6px 12px;font-size:12px">Add</a></div></div></div>
+    <div class="p-card"><div class="p-img">🧥</div><div class="p-info"><b>Premium Hoodie - Bareilly</b><span style="font-size:12px;color:var(--muted)">aspect-ratio:4/3 fixed image stretch</span><div class="p-foot"><span class="price">₹1299</span><a href="#" class="btn btn-primary" style="padding:6px 12px;font-size:12px">Buy</a></div></div></div>
+    <div class="p-card"><div class="p-img">🎒</div><div class="p-info"><b>College Backpack</b><span style="font-size:12px;color:var(--muted)">min-width:0 prevents blowout</span><div class="p-foot"><span class="price">₹999</span><a href="#" class="btn btn-primary" style="padding:6px 12px;font-size:12px">Add</a></div></div></div>
+    <div class="p-card"><div class="p-img">☕</div><div class="p-info"><b>Code Mug - Grid+Flex</b><span style="font-size:12px;color:var(--muted)">clamp() fluid typography</span><div class="p-foot"><span class="price">₹299</span><a href="#" class="btn btn-primary" style="padding:6px 12px;font-size:12px">Add</a></div></div></div>
+  </div>
+</section>
+
+<footer class="site-footer container">
+  <span>© 2026 Vijendra Maurya - BCA AI Private College Bareilly - Final Fully Responsive - Module 7/8/9 Integrated - Submitted</span>
+  <span style="display:flex;gap:12px"><span>Grid+Flex ✓</span><span>•</span><span>3 Breakpoints ✓</span><span>•</span><span>Audit Fixed ✓</span></span>
+</footer>
+
+</body>
+</html>

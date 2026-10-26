@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Vijendra Maurya - BCA AI Bareilly">
+<title>Dashboard - Named Grid Areas - Vijendra</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--primary:#1a237e;--accent:#3949ab;--bg:#f1f5f9;--surface:#ffffff;--border:#e2e8f0;--muted:#64748b}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:#0f172a}
+
+  /* ===== DASHBOARD GRID - NAMED AREAS ===== */
+  .dashboard{
+    min-height:100vh;
+    display: grid;
+    /* Define Areas */
+    grid-template-areas:
+      "header header header"
+      "sidebar main main"
+      "sidebar stats stats"
+      "footer footer footer";
+    grid-template-columns: 260px 1fr 1fr;
+    grid-template-rows: 64px 1fr auto 52px;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  /* Assign Areas */
+  .header{grid-area: header;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:0 20px;display:flex;justify-content:space-between;align-items:center}
+  .sidebar{grid-area: sidebar;background:var(--primary);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px;color:white}
+  .main{grid-area: main;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px}
+  .stats{grid-area: stats;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+  .footer{grid-area: footer;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:0 20px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted)}
+
+  .logo{font-family:'Poppins';font-weight:700;display:flex;align-items:center;gap:10px}
+  .logo-icon{width:36px;height:36px;background:white;color:var(--primary);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700}
+  .search{padding:8px 14px;border:1px solid var(--border);border-radius:999px;font-size:12px;width:260px}
+  .nav-item{padding:10px 12px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;display:flex;gap:10px;align-items:center;opacity:0.9}
+  .nav-item.active,.nav-item:hover{background:rgba(255,255,255,0.15)}
+  .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px}
+  .stat-card b{font-family:'Poppins';font-size:18px;color:var(--primary)} .stat-card span{font-size:12px;color:var(--muted)}
+  .chart{height:180px;background:linear-gradient(180deg,#eef2ff,#f8fafc);border-radius:10px;border:1px dashed var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;margin-top:12px}
+
+  /* ===== RESPONSIVE - Redefine Areas ===== */
+  @media(max-width:900px){
+    .dashboard{
+      grid-template-areas:
+        "header"
+        "sidebar"
+        "main"
+        "stats"
+        "footer";
+      grid-template-columns: 1fr;
+      grid-template-rows: 64px auto auto auto 52px;
+    }
+    .search{display:none}
+    .sidebar{flex-direction:row;overflow:auto;flex-wrap:wrap}
+  }
+</style>
+</head>
+<body>
+
+<div class="dashboard">
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo"><div class="logo-icon">VM</div> Vijendra Dashboard</div>
+    <div style="display:flex;gap:10px;align-items:center">
+      <input class="search" placeholder="Search... BCA AI Projects">
+      <span style="font-size:12px;font-weight:600">vijendra.xyz@example.com</span>
+      <div style="width:32px;height:32px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:12px">VM</div>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="nav-item active">📊 Dashboard</div>
+    <div class="nav-item">📦 Products - Grid Auto-fit</div>
+    <div class="nav-item">🖼️ Gallery - Grid</div>
+    <div class="nav-item">👤 Profile Card - Flex</div>
+    <div class="nav-item">🔐 Login Centered - Flex</div>
+    <div class="nav-item">🧭 Navbar+Hero - Flex</div>
+    <div style="margin-top:auto;background:rgba(255,255,255,0.12);padding:12px;border-radius:10px;font-size:11px;line-height:1.5">
+      <b>BCA AI Final</b><br>Module 7 Flexbox ✓<br>Module 8 Grid ✓<br>By Vijendra Maurya<br>Private College Bareilly
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <h2 style="font-family:Poppins;color:var(--primary);font-size:18px">Main Content Area</h2>
+    <p style="font-size:13px;color:var(--muted);margin-top:6px">This area uses <code>grid-area: main</code>. In CSS we defined <code>grid-template-areas: "header header header" "sidebar main main" ...</code></p>
+    <div class="chart">[ Chart / Project Preview - Flexbox Landing Page ]</div>
+    <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+      <span style="padding:6px 12px;background:#eef2ff;border-radius:999px;font-size:11px;font-weight:600">display:grid</span>
+      <span style="padding:6px 12px;background:#eef2ff;border-radius:999px;font-size:11px;font-weight:600">grid-template-areas</span>
+      <span style="padding:6px 12px;background:#eef2ff;border-radius:999px;font-size:11px;font-weight:600">grid-area</span>
+    </div>
+  </main>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stat-card"><span>Modules Completed</span><b>08 / 08</b><span>Flexbox + Grid Done ✓</span></div>
+    <div class="stat-card"><span>Pages Built</span><b>12+</b><span>By Vijendra Maurya</span></div>
+    <div class="stat-card"><span>Responsive</span><b>100%</b><span>auto-fit + wrap</span></div>
+    <div class="stat-card"><span>Final Score</span><b>A+</b><span>Bareilly Topper</span></div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span>© 2026 Vijendra Maurya - BCA AI - Dashboard with Named Areas</span>
+    <span>grid-template-areas: "header header" "sidebar main" "footer footer"</span>
+  </footer>
+</div>
+
+<div style="max-width:1000px;margin:0 auto 40px;background:white;border:1px solid var(--border);padding:18px;border-radius:12px;font-size:14px">
+  <h3 style="font-family:Poppins;color:var(--primary)">Viva Note - Named Areas kaise kaam karta hai?</h3>
+  <pre style="background:#f8fafc;padding:12px;border-radius:8px;margin:10px 0;overflow:auto"><code>.dashboard{
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "sidebar main main"
+    "sidebar stats stats"
+    "footer footer footer";
+  grid-template-columns: 260px 1fr 1fr;
+  grid-template-rows: 64px 1fr auto 52px;
+}
+.header{ grid-area: header; }
+.sidebar{ grid-area: sidebar; }
+.main{ grid-area: main; }
+.stats{ grid-area: stats; }
+.footer{ grid-area: footer; }</code></pre>
+  <b>Benefit:</b> Naam se layout samajh me aata hai. Responsive me sirf <code>grid-template-areas</code> ko badal do — poora layout mobile pe stack ho jayega, bina HTML badle.
+  <br><br><b>Flexbox vs Grid Final:</b> Flexbox 1D (menu, navbar, card ke andar). Grid 2D (poora page layout — header sidebar main footer).
+</div>
+
+</body>
+</html>

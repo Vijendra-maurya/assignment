@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form - Vijendra Maurya</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #eef2f7; margin: 0; padding: 20px; }
+        main { max-width: 600px; margin: auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #2c3e50; margin-bottom: 20px; }
+        label { font-weight: bold; display: block; margin-top: 15px; }
+        input, select, textarea { width: 100%; padding: 10px; margin-top: 5px; border-radius: 8px; border: 1px solid #ccc; box-sizing: border-box; }
+        fieldset { margin-top: 20px; border: 1px solid #ccc; border-radius: 10px; padding: 15px; }
+        legend { font-weight: bold; color: #3498db; }
+        .radio-group, .check-group { display: flex; gap: 15px; margin-top: 5px; }
+        .radio-group input, .check-group input { width: auto; }
+        button { width: 100%; padding: 12px; background: #3498db; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; margin-top: 20px; cursor: pointer; }
+        button:hover { background: #2980b9; }
+    </style>
+</head>
+<body>
+
+<main>
+    <h1>Student Registration Form</h1>
+    <p style="text-align:center;">BCA AI - Bareilly</p>
+
+    <form action="#" method="post">
+
+        <!-- Text Input -->
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" name="fullname" placeholder="Vijendra Maurya" required>
+
+        <!-- Email Input -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="vijendra.xyz@example.com" required>
+
+        <!-- Password Input -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter password" required>
+
+        <!-- Number Input -->
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="17" max="30" placeholder="Enter your age">
+
+        <!-- Date Input -->
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+
+        <!-- Radio Input -->
+        <fieldset>
+            <legend>Gender:</legend>
+            <div class="radio-group">
+                <label><input type="radio" name="gender" value="male"> Male</label>
+                <label><input type="radio" name="gender" value="female"> Female</label>
+                <label><input type="radio" name="gender" value="other"> Other</label>
+            </div>
+        </fieldset>
+
+        <!-- Select Input -->
+        <label for="course">Course:</label>
+        <select id="course" name="course" required>
+            <option value="">-- Select Course --</option>
+            <option value="bca-ai" selected>BCA AI</option>
+            <option value="bca">BCA General</option>
+            <option value="bba">BBA</option>
+            <option value="btech">B.Tech</option>
+        </select>
+
+        <!-- Select for College -->
+        <label for="college">College:</label>
+        <select id="college" name="college">
+            <option value="private-bareilly">Private College, Bareilly</option>
+            <option value="invertis">Invertis University, Bareilly</option>
+            <option value="other">Other</option>
+        </select>
+
+        <!-- Checkbox Input -->
+        <fieldset>
+            <legend>Skills Known:</legend>
+            <div class="check-group">
+                <label><input type="checkbox" name="skills" value="html"> HTML</label>
+                <label><input type="checkbox" name="skills" value="css"> CSS</label>
+                <label><input type="checkbox" name="skills" value="js"> JavaScript</label>
+            </div>
+        </fieldset>
+
+        <!-- File Input -->
+        <label for="photo">Upload Photo:</label>
+        <input type="file" id="photo" name="photo" accept="image/*">
+
+        <!-- Textarea -->
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="3" placeholder="Bareilly, Uttar Pradesh"></textarea>
+
+        <!-- Submit & Reset -->
+        <button type="submit">Register Now</button>
+        <button type="reset" style="background:#95a5a6; margin-top:10px;">Reset Form</button>
+
+    </form>
+</main>
+
+</body>
+</html>

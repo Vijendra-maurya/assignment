@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form - Vijendra Maurya</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial; background: #f0f4f8; margin: 0; padding: 20px; }
+        main { max-width: 750px; margin: auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        h1, p.subtitle { text-align: center; }
+        h1 { color: #1a237e; margin-bottom: 5px; }
+        h2 { color: #3949ab; margin-top: 30px; border-bottom: 2px solid #e8eaf6; padding-bottom: 8px; font-size: 18px; }
+        label { font-weight: 600; display: block; margin-top: 15px; font-size: 14px; }
+        input, select, textarea { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; }
+        input[type="radio"], input[type="checkbox"], input[type="color"], input[type="range"] { width: auto; }
+        .row { display: flex; gap: 15px; }
+        .row > div { flex: 1; }
+        .inline { display: flex; gap: 15px; margin-top: 8px; align-items: center; }
+        fieldset { border: 1px solid #ddd; border-radius: 10px; padding: 15px; margin-top: 15px; }
+        legend { font-weight: bold; color: #1a237e; }
+        button { padding: 12px 20px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 16px; }
+        .submit { background: #3949ab; color: white; width: 70%; }
+        .reset { background: #b0bec5; width: 28%; }
+        .btns { display: flex; justify-content: space-between; margin-top: 25px; }
+    </style>
+</head>
+<body>
+
+<main>
+    <h1>Job Application Form</h1>
+    <p class="subtitle">Applying for: Web Developer (Fresher) - BCA AI Student</p>
+
+    <form action="#" method="post" enctype="multipart/form-data">
+
+        <h2>1. Personal Information (Basic Inputs)</h2>
+        
+        <label for="name">Full Name (text)</label>
+        <input type="text" id="name" name="name" value="Vijendra Maurya" required placeholder="Enter full name">
+
+        <div class="row">
+            <div>
+                <label for="email">Email (email)</label>
+                <input type="email" id="email" name="email" placeholder="vijendra.xyz@example.com" required>
+            </div>
+            <div>
+                <label for="tel">Phone (tel)</label>
+                <input type="tel" id="tel" name="tel" pattern="[0-9]{10}" placeholder="10 digit number" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                <label for="password">Create Password (password)</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div>
+                <label for="url">Portfolio Link (url)</label>
+                <input type="url" id="url" name="url" placeholder="https://yourportfolio.com">
+            </div>
+        </div>
+
+        <label for="search">Search Job Role (search)</label>
+        <input type="search" id="search" name="search" placeholder="Search like Frontend, Backend...">
+
+        <h2>2. Other Important Inputs</h2>
+
+        <div class="row">
+            <div>
+                <label for="age">Age (number)</label>
+                <input type="number" id="age" name="age" min="18" max="40" value="21">
+            </div>
+            <div>
+                <label for="color">Favorite Theme Color (color)</label>
+                <input type="color" id="color" name="color" value="#3949ab">
+            </div>
+            <div>
+                <label for="exp">Experience: <span id="rangeVal">1</span> Year (range)</label>
+                <input type="range" id="exp" name="exp" min="0" max="5" value="1" oninput="rangeVal.innerText=this.value">
+            </div>
+        </div>
+
+        <label for="dob">Date of Birth (date)</label>
+        <input type="date" id="dob" name="dob" required>
+
+        <div class="row">
+            <div>
+                <label for="time">Available for Interview (time)</label>
+                <input type="time" id="time" name="time">
+            </div>
+            <div>
+                <label for="month">Available from Month (month)</label>
+                <input type="month" id="month" name="month">
+            </div>
+            <div>
+                <label for="week">Week Availability (week)</label>
+                <input type="week" id="week" name="week">
+            </div>
+        </div>
+
+        <label for="datetime">Interview Slot (datetime-local)</label>
+        <input type="datetime-local" id="datetime" name="datetime">
+
+        <fieldset>
+            <legend>Gender (radio)</legend>
+            <div class="inline">
+                <label><input type="radio" name="gender" value="male" checked> Male</label>
+                <label><input type="radio" name="gender" value="female"> Female</label>
+                <label><input type="radio" name="gender" value="other"> Other</label>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Skills (checkbox)</legend>
+            <div class="inline">
+                <label><input type="checkbox" name="skill" value="html" checked> HTML</label>
+                <label><input type="checkbox" name="skill" value="css" checked> CSS</label>
+                <label><input type="checkbox" name="skill" value="js"> JavaScript</label>
+                <label><input type="checkbox" name="skill" value="react"> React</label>
+            </div>
+        </fieldset>
+
+        <label for="college">College (select + datalist)</label>
+        <input list="colleges" id="college" name="college" placeholder="Type your college">
+        <datalist id="colleges">
+            <option value="Private College, Bareilly">
+            <option value="Invertis University, Bareilly">
+            <option value="Bareilly College, Bareilly">
+        </datalist>
+
+        <label for="resume">Upload Resume (file)</label>
+        <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+
+        <label for="about">Why should we hire you? (textarea)</label>
+        <textarea id="about" name="about" rows="4" placeholder="I am Vijendra Maurya, BCA AI student from Bareilly, passionate about web development..."></textarea>
+
+        <input type="hidden" name="applicant_id" value="BCA-AI-2026-VIJENDRA">
+
+        <div class="btns">
+            <button type="reset" class="reset">Reset</button>
+            <button type="submit" class="submit">Submit Application</button>
+        </div>
+
+    </form>
+</main>
+
+<script>
+    document.getElementById('exp').addEventListener('input', function(e){
+        document.getElementById('rangeVal').textContent = e.target.value;
+    });
+</script>
+
+</body>
+</html>

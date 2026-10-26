@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Vijendra Maurya - BCA AI Private College Bareilly">
+<meta name="description" content="Landing Page Skeleton - Base Desktop Styles - Module 9">
+<title>VM Landing - Skeleton + Desktop Base - Vijendra</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ===== BASE RESET + TOKENS (Desktop First - 1200px) ===== */
+  :root{
+    --primary:#1a237e;
+    --accent:#3949ab;
+    --bg:#f8f9ff;
+    --surface:#ffffff;
+    --border:#e5e7eb;
+    --text:#0f172a;
+    --muted:#6b7280;
+    --radius:16px;
+    --max-width:1200px; /* Desktop Base Width */
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  a{text-decoration:none;color:inherit}
+
+  /* ===== SKELETON STRUCTURE - DESKTOP BASE ===== */
+  .container{max-width:var(--max-width);margin:0 auto;padding:0 24px}
+
+  /* HEADER - Desktop Base: 1200px, flex row */
+  .site-header{
+    height:72px;
+    background:var(--surface);
+    border-bottom:1px solid var(--border);
+    display:flex; /* FLEX for desktop */
+    justify-content:space-between;
+    align-items:center;
+  }
+  .site-header .logo{font-family:'Poppins';font-weight:800;font-size:18px;color:var(--primary);display:flex;gap:10px;align-items:center}
+  .logo-icon{width:36px;height:36px;background:var(--primary);color:white;border-radius:10px;display:flex;align-items:center;justify-content:center}
+  .main-nav{display:flex;gap:8px;list-style:none;align-items:center}
+  .main-nav a{padding:8px 16px;border-radius:999px;font-size:14px;font-weight:600}
+  .main-nav a.active{background:var(--primary);color:white}
+
+  /* HERO - Desktop Base: 2 columns, 600px + 400px */
+  .hero-section{
+    min-height:520px;
+    padding:60px 24px;
+    background:var(--surface);
+    display:flex; /* FLEX desktop */
+    justify-content:space-between;
+    align-items:center;
+    gap:40px;
+  }
+  .hero-content{flex:1 1 600px;max-width:600px;display:flex;flex-direction:column;gap:16px}
+  .hero-content h1{font-family:'Poppins';font-size:48px;line-height:1.1;color:var(--primary)}
+  .hero-content h1 span{color:var(--accent)}
+  .hero-content p{font-size:16px;color:var(--muted)}
+  .hero-actions{display:flex;gap:12px}
+  .hero-visual{flex:1 1 400px;display:flex;justify-content:center;align-items:center}
+  .visual-box{width:100%;max-width:400px;height:320px;background:var(--bg);border:1px dashed var(--border);border-radius:20px;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+
+  /* FEATURES - Desktop Base: Grid 3 columns */
+  .features-section{padding:50px 24px;background:var(--bg)}
+  .features-section h2{font-family:'Poppins';font-size:28px;color:var(--primary);margin-bottom:24px}
+  .features-grid{
+    display:grid; /* GRID desktop */
+    grid-template-columns: repeat(3, 1fr);
+    gap:24px;
+  }
+  .feature-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
+
+  /* PRODUCTS - Desktop Base: Grid 4 columns */
+  .products-section{padding:50px 24px;background:var(--surface)}
+  .products-section h2{font-family:'Poppins';font-size:28px;color:var(--primary);margin-bottom:24px}
+  .products-grid{
+    display:grid; /* GRID desktop */
+    grid-template-columns: repeat(4, 1fr);
+    gap:20px;
+  }
+  .product-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column}
+  .product-card .img{height:180px;background:#f3f4f6;display:flex;align-items:center;justify-content:center}
+  .product-card .info{padding:14px}
+
+  /* FOOTER - Desktop Base: flex row */
+  .site-footer{
+    height:64px;
+    padding:0 24px;
+    background:var(--surface);
+    border-top:1px solid var(--border);
+    display:flex; /* FLEX desktop */
+    justify-content:space-between;
+    align-items:center;
+    font-size:13px;
+    color:var(--muted);
+  }
+
+  /* Buttons - Base */
+  .btn{padding:12px 20px;border-radius:10px;font-weight:600;font-size:14px;display:inline-flex;justify-content:center;align-items:center}
+  .btn-primary{background:var(--primary);color:white}
+  .btn-outline{background:white;border:1px solid var(--border)}
+</style>
+</head>
+<body>
+
+<!-- SKELETON - SEMANTIC HTML -->
+<header class="site-header container">
+  <div class="logo"><div class="logo-icon">VM</div> Vijendra Maurya</div>
+  <nav><ul class="main-nav">
+    <li><a href="#" class="active">Home</a></li>
+    <li><a href="#">Features</a></li>
+    <li><a href="#">Products</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul></nav>
+</header>
+
+<section class="hero-section container">
+  <div class="hero-content">
+    <span style="font-size:11px;font-weight:700;color:var(--primary);background:#eef2ff;padding:4px 10px;border-radius:999px;align-self:flex-start">BASE DESKTOP STYLES - 1200px</span>
+    <h1>Base Desktop <span>Landing Skeleton</span></h1>
+    <p>This is desktop base (1200px). No breakpoints yet. Next commit will add 768px and 480px breakpoints. Grid + Flex appropriately used.</p>
+    <div class="hero-actions">
+      <a href="#" class="btn btn-primary">Primary - Flex</a>
+      <a href="#" class="btn btn-outline">Outline - Flex</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="visual-box">Hero Visual - Flex: 1 1 400px</div>
+  </div>
+</section>
+
+<section class="features-section container">
+  <h2>Features - Desktop: grid-template-columns: repeat(3, 1fr)</h2>
+  <div class="features-grid">
+    <div class="feature-card"><b>Flexbox - Navbar</b><p style="font-size:13px;color:var(--muted)">display:flex, space-between</p></div>
+    <div class="feature-card"><b>Flexbox - Hero</b><p style="font-size:13px;color:var(--muted)">display:flex, flex:1 1 600px</p></div>
+    <div class="feature-card"><b>Grid - Features</b><p style="font-size:13px;color:var(--muted)">grid-template-columns: repeat(3,1fr)</p></div>
+  </div>
+</section>
+
+<section class="products-section container">
+  <h2>Products - Desktop: grid-template-columns: repeat(4, 1fr)</h2>
+  <div class="products-grid">
+    <div class="product-card"><div class="img">👕</div><div class="info"><b>Product 1</b><p style="font-size:12px;color:var(--muted)">Desktop 4 col</p></div></div>
+    <div class="product-card"><div class="img">🧥</div><div class="info"><b>Product 2</b><p style="font-size:12px;color:var(--muted)">Desktop 4 col</p></div></div>
+    <div class="product-card"><div class="img">🎒</div><div class="info"><b>Product 3</b><p style="font-size:12px;color:var(--muted)">Desktop 4 col</p></div></div>
+    <div class="product-card"><div class="img">☕</div><div class="info"><b>Product 4</b><p style="font-size:12px;color:var(--muted)">Desktop 4 col</p></div></div>
+  </div>
+</section>
+
+<footer class="site-footer container">
+  <span>© 2026 Vijendra - Skeleton + Desktop Base - 1200px</span>
+  <span>Grid: Features 3col, Products 4col | Flex: Header, Hero, Footer</span>
+</footer>
+
+</body>
+</html>

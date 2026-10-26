@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Vijendra Maurya - BCA AI Bareilly">
+<title>Responsive Product Grid - Auto Reflow - Grid</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--primary:#1a237e;--accent:#3949ab;--bg:#f8f9ff;--border:#e5e7eb;--muted:#6b7280}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--bg)}
+
+  .topbar{padding:20px 6%;background:white;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .topbar h1{font-family:'Poppins';color:var(--primary);font-size:20px}
+  .controls{display:flex;gap:8px}
+  .chip{padding:6px 14px;border:1px solid var(--border);border-radius:999px;font-size:12px;font-weight:600;cursor:pointer;background:white}
+  .chip.active{background:var(--primary);color:white;border-color:var(--primary)}
+
+  /* ===== CORE GRID - AUTO REFLOW ===== */
+  .product-grid{
+    padding:24px 6%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    /* auto-fit + minmax = automatic reflow */
+    gap: 20px;
+  }
+
+  .card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:16px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    transition:0.2s;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,0.07)}
+  .img{height:190px;background:#f3f4f6;display:flex;align-items:center;justify-content:center;font-size:32px;position:relative}
+  .badge{position:absolute;top:10px;left:10px;background:var(--primary);color:white;font-size:10px;padding:4px 8px;border-radius:999px;font-weight:700}
+  .badge.sale{left:auto;right:10px;background:#dc2626}
+  .info{padding:14px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .info h3{font-family:'Poppins';font-size:14px}
+  .info p{font-size:12px;color:var(--muted)}
+  .foot{margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center}
+  .price{font-weight:700;color:var(--primary)}
+  .price del{font-size:11px;color:var(--muted);font-weight:400;margin-left:4px}
+  .btn{padding:7px 14px;background:var(--primary);color:white;border-radius:8px;text-decoration:none;font-size:12px;font-weight:600}
+
+  /* BONUS: Different minmax demo */
+  .demo{margin:20px 6%;background:white;border:1px dashed var(--border);padding:16px;border-radius:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;font-size:12px}
+  .demo div{background:var(--bg);padding:10px;border-radius:8px;text-align:center;border:1px solid var(--border)}
+
+  .note{max-width:1000px;margin:20px auto 40px;background:white;padding:18px;border-radius:12px;font-size:14px;border:1px solid var(--border)}
+  code{background:#f3f4f6;padding:2px 6px;border-radius:4px;font-size:12px}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>VM Store • auto-fit Product Grid</h1>
+  <div class="controls">
+    <span class="chip active">All - auto-fit</span>
+    <span class="chip">minmax(260px, 1fr)</span>
+    <span class="chip">gap: 20px</span>
+  </div>
+</div>
+
+<div class="product-grid">
+  <div class="card"><div class="img">👕<span class="badge">NEW</span><span class="badge sale">30% OFF</span></div><div class="info"><h3>Classic Cotton Tee</h3><p>BCA AI Collection - Bareilly</p><div class="foot"><div class="price">₹599 <del>₹899</del></div><a href="#" class="btn">Add</a></div></div></div>
+  <div class="card"><div class="img">🧥</div><div class="info"><h3>Premium Hoodie</h3><p>Winter Fleece - VM Brand</p><div class="foot"><div class="price">₹1299</div><a href="#" class="btn">Buy</a></div></div></div>
+  <div class="card"><div class="img">🧢</div><div class="info"><h3>VM Cap</h3><p>Vijendra Maurya Limited</p><div class="foot"><div class="price">₹349</div><a href="#" class="btn">Add</a></div></div></div>
+  <div class="card"><div class="img">🎒</div><div class="info"><h3>College Backpack</h3><p>Waterproof - Laptop 15"</p><div class="foot"><div class="price">₹999</div><a href="#" class="btn">Add</a></div></div></div>
+  <div class="card"><div class="img">☕</div><div class="info"><h3>Code Mug</h3><p>display:grid Edition</p><div class="foot"><div class="price">₹299</div><a href="#" class="btn">Add</a></div></div></div>
+  <div class="card"><div class="img">💻</div><div class="info"><h3>Laptop Stickers</h3><p>HTML CSS Grid Pack</p><div class="foot"><div class="price">₹199</div><a href="#" class="btn">Add</a></div></div></div>
+  <div class="card"><div class="img">⌚</div><div class="info"><h3>Smart Band</h3><p>VM Tech - Bareilly</p><div class="foot"><div class="price">₹1999</div><a href="#" class="btn">Buy</a></div></div></div>
+  <div class="card"><div class="img">📚</div><div class="info"><h3>DSA Book</h3><p>For BCA AI Students</p><div class="foot"><div class="price">₹499</div><a href="#" class="btn">Add</a></div></div></div>
+</div>
+
+<h3 style="font-family:Poppins;text-align:center;margin-top:10px;color:var(--primary)">Auto Reflow Demo - Resize Window</h3>
+<div class="demo">
+  <div>minmax(180px,1fr) - Box 1</div>
+  <div>Box 2</div>
+  <div>Box 3</div>
+  <div>Box 4</div>
+  <div>Box 5</div>
+  <div>Box 6</div>
+</div>
+
+<div class="note">
+  <b style="font-family:Poppins;color:var(--primary)">Viva Note - Why it reflows automatically?</b>
+  <pre style="background:#f8f9ff;padding:12px;border-radius:8px;margin:10px 0;overflow:auto"><code>.product-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}</code></pre>
+  <b>1. auto-fit:</b> Bachi hui jagah ko dekh ke khud decide karta hai kitne columns banane hain. Screen badi = 4 columns, chhoti = 1 column.<br>
+  <b>2. minmax(260px, 1fr):</b> Har card kam se kam 260px ka hoga, uske baad bachi jagah <code>1fr</code> (1 fraction) se barabar bat jayegi.<br>
+  <b>3. No Media Query:</b> Is formula se hi mobile/tablet/desktop auto handle ho jata hai. Flexbox me <code>flex-wrap</code> lagana padta tha, Grid me <code>auto-fit</code> hi kaafi hai.<br>
+  <b>Difference:</b> <code>auto-fill</code> khali columns bhi bana deta hai, <code>auto-fit</code> khali columns ko collapse karke cards ko stretch kar deta hai — isliye product grid ke liye <code>auto-fit</code> best hai.
+</div>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Vijendra Maurya">
+<title>3 Card Variants - Vijendra</title>
+<link rel="stylesheet" href="design-tokens.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@600&display=swap" rel="stylesheet">
+<style>
+  body{background:var(--color-bg);font-family:var(--font-body);margin:0;padding:20px}
+  h1{font-family:var(--font-heading);text-align:center;color:var(--color-primary)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:1000px;margin:20px auto}
+  
+  /* Common Card Base */
+  .card{padding:24px;box-shadow:var(--shadow-sm);transition:0.3s}
+  .card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md)}
+  .card h3{font-family:var(--font-heading);margin:0 0 8px}
+  .card p{font-size:14px;color:var(--color-muted)}
+  .tag{font-size:12px;padding:4px 10px;border-radius:999px;font-weight:600;display:inline-block;margin-bottom:10px}
+
+  /* VARIANT 1 - Soft Rounded - E-commerce Product */
+  .card-1{
+    background: #ffffff;
+    border-radius: 16px; /* Normal rounded */
+    border: 1px solid var(--color-border);
+  }
+  .card-1 .tag{background:var(--color-primary-soft);color:var(--color-accent)}
+
+  /* VARIANT 2 - Pill / Extra Rounded - Profile / Bestseller */
+  .card-2{
+    background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%); /* Gradient Background */
+    border-radius: 32px; /* Extra large radius */
+    color: white;
+  }
+  .card-2 h3{color:white} .card-2 p{color:#d1d5ff}
+  .card-2 .tag{background:white;color:var(--color-primary)}
+
+  /* VARIANT 3 - Sharp + Glass - Offer / Warning */
+  .card-3{
+    background: #fff8e1; /* Soft Yellow background */
+    border-radius: 4px 24px 4px 24px; /* Different radius on corners - Sharp & Curvy mix */
+    border-left: 5px solid var(--color-warning);
+  }
+  .card-3 .tag{background:var(--color-warning);color:white}
+</style>
+</head>
+<body>
+
+<h1>3 Card Variants - by Vijendra Maurya</h1>
+<p style="text-align:center;color:var(--color-muted)">BCA AI, Bareilly | Using border-radius + backgrounds</p>
+
+<div class="grid">
+
+  <!-- CARD 1 -->
+  <div class="card card-1">
+    <span class="tag">Variant 1 - Soft</span>
+    <h3>Product Card</h3>
+    <p><b>Use:</b> E-commerce listing</p>
+    <p>border-radius: 16px<br>background: #ffffff (solid)</p>
+    <p style="margin-top:12px">Ye normal product ke liye hai. Clean, white, soft corners. Aapke size-chart table ke liye best.</p>
+  </div>
+
+  <!-- CARD 2 -->
+  <div class="card card-2">
+    <span class="tag">Variant 2 - Pill Gradient</span>
+    <h3>Profile Bestseller</h3>
+    <p><b>Use:</b> Resume / Featured Product</p>
+    <p>border-radius: 32px<br>background: linear-gradient(navy to blue)</p>
+    <p style="margin-top:12px">Ye premium feel deta hai. Vijendra Maurya ka profile ya Bestseller product highlight karne ke liye.</p>
+  </div>
+
+  <!-- CARD 3 -->
+  <div class="card card-3">
+    <span class="tag">Variant 3 - Mixed Radius</span>
+    <h3>Offer Card</h3>
+    <p><b>Use:</b> Low Stock / Warning</p>
+    <p>border-radius: 4px 24px 4px 24px<br>background: #fff8e1 + left border</p>
+    <p style="margin-top:12px">Ek corner sharp, ek curvy. Attention grab karta hai. Low Stock ya Special Offer ke liye.</p>
+  </div>
+
+</div>
+
+<div style="max-width:1000px;margin:30px auto;background:white;padding:20px;border-radius:12px">
+  <h3 style="font-family:var(--font-heading);color:var(--color-primary)">Viva Note:</h3>
+  <table style="width:100%;border-collapse:collapse;font-size:14px;margin-top:10px">
+    <tr style="background:#f0f2ff"><th style="padding:8px;border:1px solid #e5e7eb;text-align:left">Variant</th><th style="padding:8px;border:1px solid #e5e7eb;text-align:left">border-radius</th><th style="padding:8px;border:1px solid #e5e7eb;text-align:left">background</th></tr>
+    <tr><td style="padding:8px;border:1px solid #e5e7eb">Card-1 Soft</td><td style="padding:8px;border:1px solid #e5e7eb">16px (equal)</td><td style="padding:8px;border:1px solid #e5e7eb">Solid white</td></tr>
+    <tr><td style="padding:8px;border:1px solid #e5e7eb">Card-2 Pill</td><td style="padding:8px;border:1px solid #e5e7eb">32px (extra large)</td><td style="padding:8px;border:1px solid #e5e7eb">Gradient navy</td></tr>
+    <tr><td style="padding:8px;border:1px solid #e5e7eb">Card-3 Mixed</td><td style="padding:8px;border:1px solid #e5e7eb">4px 24px 4px 24px (unequal)</td><td style="padding:8px;border:1px solid #e5e7eb">Tint + border-left accent</td></tr>
+  </table>
+</div>
+
+</body>
+</html>
